@@ -16,6 +16,9 @@ class Profile extends Component
     public $name;
     public $lastname;
     public $cellphone;
+    public $title;
+    public $about;
+    public $profession;
     public $password;
     public $password_confirmation;
     public $success=false;
@@ -24,6 +27,10 @@ class Profile extends Component
         'name' => 'required|string|max:50',
         'lastname' => 'required|string|max:50',
         'cellphone' => 'required|string|max:255',
+        'title' => 'required|string|max:255',
+        'profession' => 'required|string|max:255',
+        'about' => 'required|string',
+
 
     ];
     public  function mount(){
@@ -31,6 +38,11 @@ class Profile extends Component
         $this->name=$this->user->name;
         $this->lastname=$this->user->lastname;
         $this->cellphone=$this->user->cellphone;
+        if ($this->user->bio){
+            $this->profession=$this->user->bio->profession;
+            $this->about=$this->user->bio->about;
+            $this->title=$this->user->bio->title;
+        }
         $this->profile=$this->user->getFirstMediaUrl('profile');
         $this->profileCard=$this->user->getFirstMediaUrl('profile','profile-card');
     }
@@ -62,6 +74,20 @@ class Profile extends Component
             'lastname'=>$this->lastname,
             'cellphone'=>$this->cellphone
         ]);
+        if ($this->user->bio){
+            $this->user->bio()->update([
+                'title'=>$this->title,
+                'profession'=>$this->profession,
+                'about'=>$this->about,
+            ]);
+        }else{
+            $this->user->bio()->create([
+                'title'=>$this->title,
+                'profession'=>$this->profession,
+                'about'=>$this->about,
+            ]);
+        }
+
 
         $this->success=true;
     }

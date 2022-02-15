@@ -131,17 +131,13 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingFour">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                        <i class="fas fa-info-circle me-3"></i>Faqs
+                        <i class="fa-regular fa-envelope me-3"></i>Messages
                     </button>
                 </h2>
                 <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <ul class="list-unstyled folders">
-                            <li><a href="#" title="Admins">FAqs Category</a> </li>
-
-                        </ul>
-                        <ul class="list-unstyled folders">
-                            <li><a href="#" title="Admins">Create Faqs</a> </li>
+                            <li><a href="{{route('messages.index')}}" title="Admins">Inbox</a> </li>
 
                         </ul>
                     </div>

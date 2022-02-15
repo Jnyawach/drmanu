@@ -21,13 +21,19 @@ use App\Http\Controllers\Admin\AdminRoleController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminPolicyController;
+use App\Http\Controllers\Admin\AdminContactController;
 
+/*General Routes*/
+use App\Http\Controllers\General\ContactController;
 
 Auth::routes();
 Route::resource('/',MainController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::group([],function (){
+    Route::resource('contact',ContactController::class);
+});
 Route::group(['middleware'=>'auth'], function (){
+    Route::resource('admin/messages',AdminContactController::class);
     Route::resource('admin/policies',AdminPolicyController::class);
     Route::resource('admin/users',AdminUserController::class);
     Route::resource('admin/categories',AdminCategoryController::class);

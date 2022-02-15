@@ -51,8 +51,6 @@
 
                     </div>
                     <div class="form-group row mt-3">
-
-
                         <div class="col-12 col-sm-6 col-md-5 col-lg-5">
                             <label for="cellphone" class="control-label">Cellphone:</label>
                             <input type="text" name="cellphone" class="form-control" id="cellphone" value="{{old('cellphone')}}"
@@ -70,7 +68,7 @@
 
 
                         <div class="col-12 col-sm-6 col-md-5 col-lg-5">
-                            <label for="cellphone" class="control-label">Password:</label>
+                            <label for="password" class="control-label">Password:</label>
                             <input type="password" name="password" class="form-control" id="password"
                                    required>
                             @error('password') <span class="error">{{ $message }}</span> @enderror
@@ -82,6 +80,29 @@
 
                         </div>
                     </div>
+
+                    <div class="form-group row mt-3">
+                        <div class="col-12 col-sm-6 col-md-5 col-lg-5">
+                            <label for="title" class="control-label">Title:</label>
+                            <input type="text" name="title" class="form-control" id="title"
+                                   required value="{{old('title')}}">
+                            @error('title') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-5 col-lg-5">
+                            <label for="profession" class="control-label">Profession:</label>
+                            <input type="text" name="profession" class="form-control" id="profession"
+                                   required value="{{old('profession')}}">
+                            @error('profession') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+                    </div>
+                    <div class="form-group mt-3 row">
+                        <div class="col-10">
+                        <label for="about" class="control-label">About:</label>
+                        <textarea name="about" class="form-control" id="about" rows="6">{{old('about')}}</textarea>
+                        <small>Write a short bio about your self. A maximum of 150 words</small>
+                        @error('about') <span class="error">{{ $message }}</span> @enderror
+                        </div>
+                        </div>
                     <div class="form-group mt-3">
                         <button type="submit" class="btn btn-primary">Create User</button>
                     </div>

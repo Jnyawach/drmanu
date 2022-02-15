@@ -350,7 +350,7 @@
         <div class="col-11 col-md-3 mx-auto">
             <ul class="nav flex-column footer-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
+                    <a class="nav-link" href="{{route('contact.index')}}">Contact Us</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>

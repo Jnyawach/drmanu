@@ -139,6 +139,8 @@ a h2:hover{
 .btn-link{
     color: var(--primary);
     font-weight: 600;
+    background: none;
+    border: none;
 }
 .btn-link:hover{
     color: var(--junior);

@@ -55,6 +55,9 @@ class AdminUserController extends Controller
             'role' => ['required', 'integer', 'max:10'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'title' => ['required', 'string', 'max:255'],
+            'profession' => ['required', 'string', 'max:255'],
+            'about' => ['required', 'string'],
         ]);
 
         $user=User::create([
@@ -64,6 +67,11 @@ class AdminUserController extends Controller
             'status'=>$validated['status'],
             'email'=>$validated['email'],
             'password'=>Hash::make($validated['password']),
+        ]);
+        $user->bio()->create([
+            'title'=>$validated['title'],
+            'profession'=>$validated['profession'],
+            'about'=>$validated['about'],
         ]);
         $role=Role::findOrFail($validated['role']);
 
@@ -114,9 +122,11 @@ class AdminUserController extends Controller
         $validated=$request->validate([
             'name' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-
             'cellphone' => ['required', 'string', 'max:255'],
             'status'=>['required'],
+            'title' => ['required', 'string', 'max:255'],
+            'profession' => ['required', 'string', 'max:255'],
+            'about' => ['required', 'string'],
 
 
         ]);
@@ -129,6 +139,11 @@ class AdminUserController extends Controller
             'name'=>$validated['name'],
             'lastname'=>$validated['lastname'],
             'status'=>$validated['status']
+        ]);
+        $user->bio()->update([
+            'title'=>$validated['title'],
+            'profession'=>$validated['profession'],
+            'about'=>$validated['about'],
         ]);
 
         return redirect('admin/users')

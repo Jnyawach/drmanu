@@ -61,4 +61,8 @@ class User extends Authenticatable implements HasMedia
                     ->width(100);
             });
     }
+
+    public function bio(){
+        return $this->hasOne(Bio::class);
+    }
 }
