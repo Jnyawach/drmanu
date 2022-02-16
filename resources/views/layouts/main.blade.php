@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link href="{{asset('css/awesome/css/all.css')}}" rel="stylesheet">
     @yield('styles')
+
     <link rel="stylesheet" href="{{asset('css/main.css')}}" type="text/css">
 </head>
 <body>
@@ -333,19 +334,7 @@
                 </div>
             </div>
             <p class="mt-4">Subscribe to get expert health news, report, tips, recommendations, and reviews</p>
-            <form class="m-2 ">
-                <div class="form-group row">
-                    <div class="col-12 col-md-4 p-2">
-                        <input type="text" placeholder="Your Name" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-4 p-2">
-                        <input type="email" placeholder="Your Email" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-2 p-2">
-                        <button type="submit" class="btn btn-success">Subscribe</button>
-                    </div>
-                </div>
-            </form>
+            @include('includes.subscriber')
         </div>
         <div class="col-11 col-md-3 mx-auto">
             <ul class="nav flex-column footer-nav">
@@ -394,5 +383,6 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 @yield('scripts')
+
 </body>
 </html>

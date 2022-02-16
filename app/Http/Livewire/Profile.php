@@ -57,6 +57,9 @@ class Profile extends Component
     }
 
     public function updatedProfile() {
+        $this->validate([
+           'profile'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
 
 
         if (Auth::user()->getMedia('profile')->count()>0){

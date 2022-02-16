@@ -7,13 +7,14 @@
                 <div class="col-11 col-sm-9 col-md-8 col-lg-6 mx-auto register">
                     <div class="text-center">
                         <a href="#" title="Return Home">
-                            <img src="images/manu-logo.png" class="img-fluid">
+                            <img src="{{asset('images/manu-logo.png')}}" class="img-fluid">
                         </a>
                         <h2 class="mt-3 fs-4">Please Register</h2>
 
                     </div>
                     <form class="m-sm-5" method="POST" action="{{ route('register') }}">
                         @csrf
+                        @honeypot
                         <div class="form-group">
                             <label class="control-label" for="firstName">First Name:</label>
                             <input type="text" id="firstName" name="name" class="form-control"

@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminPolicyController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminSubscriptionController;
+use App\Http\Controllers\Admin\AdminNewsController;
 
 /*General Routes*/
 use App\Http\Controllers\General\ContactController;
@@ -34,6 +35,7 @@ Route::group([],function (){
     Route::resource('contact',ContactController::class);
 });
 Route::group(['middleware'=>'auth'], function (){
+    Route::resource('admin/news',AdminNewsController::class);
     Route::resource('admin/subscriptions',AdminSubscriptionController::class);
     Route::resource('admin/messages',AdminContactController::class);
     Route::resource('admin/policies',AdminPolicyController::class);

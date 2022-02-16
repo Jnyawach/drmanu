@@ -152,19 +152,7 @@
 
                 <h2 class="mt-5">Never Miss a Thing...</h2>
                 <p class="fs-4">Subscribe to get expert health news, report, tips, recommendations and reviews</p>
-                <form class="mt-5 ms-3">
-                    <div class="form-group row">
-                        <div class="col-12 col-md-4 p-2">
-                            <input type="text" placeholder="Your Name" class="form-control" required>
-                        </div>
-                        <div class="col-12 col-md-4 p-2">
-                            <input type="email" placeholder="Your Email" class="form-control" required>
-                        </div>
-                        <div class="col-12 col-md-2 p-2">
-                            <button type="submit" class="btn btn-primary">Subscribe</button>
-                        </div>
-                    </div>
-                </form>
+                @include('includes.subscriber')
             </div>
         </section>
         <section class="trending m-5 pt-3">

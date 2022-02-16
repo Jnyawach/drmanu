@@ -209,19 +209,18 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingTen">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen">
-                        <i class="fas fa-money-check-alt me-2"></i>Promotions
+                        <i class="fa-solid fa-newspaper me-2"></i>News
                     </button>
                 </h2>
                 <div id="flush-collapseTen" class="accordion-collapse collapse" aria-labelledby="flush-collapseTen" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <ul class="list-unstyled folders">
-                            <li><a href="#" title="Admins">View Promotions</a> </li>
-
+                            <li><a href="{{route('news.index')}}" title="Admins">Manage News</a> </li>
                         </ul>
                         <ul class="list-unstyled folders">
-                            <li><a href="#" title="Admins">Create Promotions</a> </li>
-
+                            <li><a href="{{route('news.create')}}" title="Admins">Post News</a> </li>
                         </ul>
+
 
                     </div>
                 </div>
@@ -276,78 +275,7 @@
     @yield('content')
 </main>
 
-<footer class="p-5">
-    <div class="row">
-        <div class="col-11 col-md-6 mx-auto">
-            <div class="row">
-                <div class="col-6 col-md-4">
-                    <a href="#" title="Dr. Manu">
-                        <img src="{{asset('images/manu-logo-white.png')}}" class="img-fluid" style="width: 150px">
-                    </a>
-                </div>
-                <div class="col-6">
-                    <div class="social">
-                        <a href="#" title="Facebook" class="m-2"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" title="Instagram" class="m-2"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" title="Instagram" class="m-2"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" title="Instagram" class="m-2"><i class="fa-brands fa-pinterest-p"></i></a>
-                    </div>
-                </div>
-            </div>
-            <p class="mt-4">Subscribe to get expert health news, report, tips, recommendations, and reviews</p>
-            <form class="m-2 ">
-                <div class="form-group row">
-                    <div class="col-12 col-md-4 p-2">
-                        <input type="text" placeholder="Your Name" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-4 p-2">
-                        <input type="email" placeholder="Your Email" class="form-control" required>
-                    </div>
-                    <div class="col-12 col-md-2 p-2">
-                        <button type="submit" class="btn btn-success">Subscribe</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="col-11 col-md-3 mx-auto">
-            <ul class="nav flex-column footer-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Privacy Policy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Terms and Conditions</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Careers</a>
-                </li>
-            </ul>
-        </div>
-        <div class="col-11 col-md-3 mx-auto">
-            <ul class="nav flex-column footer-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Advertising Policy</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Advertise with us</a>
-                </li>
 
-            </ul>
-
-            <p>Dr. Manu Website resources and contents are for informational purposes only.
-                Please note that we do not provide any medical advice, diagnosis, or treatment. In case of a
-                medical emergency consult with your physician or the nearest medical facility.</p>
-
-        </div>
-
-    </div>
-
-</footer>
 <div class="copy">
     <p class="p-3">&copy; 2022 Dr. Manu is a Cerve Ltd Company. All rights reserved.</p>
 </div>

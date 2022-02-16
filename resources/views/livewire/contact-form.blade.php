@@ -21,6 +21,7 @@
 
                 <h2>Send Us a Message</h2>
                 <form class="mt-5" wire:submit.prevent="createMessage">
+                    @honeypot
                     <div class="form-group required m-2">
                         <label class="control-label" for="userName">
                             Your Name:

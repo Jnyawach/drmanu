@@ -65,4 +65,8 @@ class User extends Authenticatable implements HasMedia
     public function bio(){
         return $this->hasOne(Bio::class);
     }
+
+    public function news(){
+        $this->hasMany(News::class);
+    }
 }
