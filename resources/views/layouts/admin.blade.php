@@ -168,19 +168,16 @@
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingSix">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                        <i class="fas fa-tags me-2"></i>Brands
+                        <i class="fa-solid fa-users me-2"></i>Subscriptions
                     </button>
                 </h2>
                 <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-collapseSix" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <ul class="list-unstyled folders">
-                            <li><a href="#" title="Admins">Brands</a> </li>
+                            <li><a href="{{route('subscriptions.index')}}" title="Admins">Subscribers</a> </li>
 
                         </ul>
-                        <ul class="list-unstyled folders">
-                            <li><a href="#" title="Admins">Create Brands</a> </li>
 
-                        </ul>
                     </div>
                 </div>
 

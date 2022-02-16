@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminCategoryController extends Controller
 {
@@ -41,12 +42,21 @@ class AdminCategoryController extends Controller
         //
         $validated=$request->validate([
             'name'=>'required|string|max:25',
-            'status'=>'required|max:1'
+            'status'=>'required|max:1',
+            'grey-icon'=>'required|image|mimes:png|max:2048',
+            'orange-icon'=>'required|image|mimes:png|max:2048'
         ]);
         $category=Category::create([
             'name'=>$validated['name'],
             'status'=>$validated['status']
         ]);
+        if($grey=$request->file('grey-icon')) {
+            $category->addMedia($grey)->toMediaCollection('grey-icon');
+
+        }
+        if( $orange=$request->file('orange-icon')){
+            $category->addMedia($orange)->toMediaCollection('orange-icon');
+        }
 
         return  redirect()->back()->with('status','Category added Successfully');
     }
@@ -89,12 +99,33 @@ class AdminCategoryController extends Controller
         $category=Category::findOrFail($id);
         $validated=$request->validate([
             'name'=>'required|string|max:25',
-            'status'=>'required'
+            'status'=>'required',
+            'grey-icon'=>'required|image|mimes:png|max:2048',
+            'orange-icon'=>'required|image|mimes:png|max:2048'
         ]);
         $category->update([
             'name'=>$validated['name'],
             'status'=>$validated['status']
         ]);
+
+        if($files=$request->file('grey-icon')) {
+            if ( $category->getMedia('grey-icon')->count()>0){
+                 $category->clearMediaCollection('grey-icon');
+                 $category->addMedia($files)->toMediaCollection('grey-icon');
+            }else{
+                 $category->addMedia($files)->toMediaCollection('grey-icon');
+            }
+
+        }
+        if($files=$request->file('orange-icon')) {
+            if ( $category->getMedia('orange-icon')->count()>0){
+                $category->clearMediaCollection('orange-icon');
+                $category->addMedia($files)->toMediaCollection('orange-icon');
+            }else{
+                $category->addMedia($files)->toMediaCollection('orange-icon');
+            }
+
+        }
 
         return  redirect()->back()->with('status','Category added Successfully');
     }

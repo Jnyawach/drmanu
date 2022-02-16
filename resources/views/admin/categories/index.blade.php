@@ -28,13 +28,14 @@
                                                     aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form action="{{route('categories.store')}}" method="POST" id="roleForm">
+                                            <form action="{{route('categories.store')}}" method="POST" id="roleForm" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="form-group required">
                                                     <label class="control-label" for="name">
                                                         Category</label>
                                                     <input type="text" class="form-control complete" name="name"
                                                            required>
+                                                    @error('name') <span class="error">{{ $message }}</span> @enderror
 
                                                 </div>
                                                 <div class="form-group mt-3">
@@ -47,6 +48,23 @@
                                                         <option value="0">Inactive</option>
 
                                                     </select>
+                                                    @error('status') <span class="error">{{ $message }}</span> @enderror
+                                                </div>
+                                                <div class="form-group mt-3">
+                                                    <div class="">
+                                                        <label for="greyIcon" class="form-label">Grey Icon File</label>
+                                                        <input class="form-control" type="file" id="greyIcon" name="grey-icon">
+                                                    </div>
+                                                    @error('grey-icon') <span class="error">{{ $message }}</span> @enderror
+                                                </div>
+                                                <div class="form-group mt-3">
+                                                    <div class="">
+                                                        <label for="orangeIcon" class="form-label">Orange Icon File</label>
+                                                        <input class="form-control" type="file" id="orangeIcon" name="orange-icon">
+                                                        @error('orange-icon') <span class="error">{{ $message }}</span> @enderror
+                                                        <small>Please not that the grey and orange icon must be the same size. The file
+                                                        type must be transparent png</small>
+                                                    </div>
                                                 </div>
                                             </form>
 
@@ -64,6 +82,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>NAME</th>
+                                    <th>IMAGE</th>
+                                    <th>HOVER IMAGE</th>
                                     <th>POSTS</th>
                                     <th>CREATED ON</th>
                                     <th>ACTION</th>
@@ -74,6 +94,8 @@
                                     <tr>
                                         <td>{{$category->id}}</td>
                                         <td>{{$category->name}}</td>
+                                        <td><img src="{{asset($category->getFirstMediaUrl('grey-icon')?$category->getFirstMediaUrl('grey-icon'):'images/user.png')}}" alt="{{$category->name}}" style="height: 60px"></td>
+                                        <td><img src="{{asset($category->getFirstMediaUrl('orange-icon')?$category->getFirstMediaUrl('orange-icon'):'images/user.png')}}" alt="{{$category->name}}" style="height: 60px"></td>
                                         <td>100</td>
                                         <td>{{$category->created_at->diffForHumans()}}</td>
                                         <td>
@@ -112,7 +134,7 @@
                                                         <div class="modal-body">
                                                             <form
                                                                 action="{{route('categories.update',$category->id)}}"
-                                                                method="POST" id="roleEdit{{$category->id}}">
+                                                                method="POST" id="roleEdit{{$category->id}}" enctype="multipart/form-data">
                                                                 @method('PATCH')
                                                                 @csrf
                                                                 <div class="form-group required">
@@ -122,6 +144,7 @@
                                                                     <input type="text" class="form-control complete"
                                                                            name="name"
                                                                            required value="{{$category->name}}">
+                                                                    @error('name') <span class="error">{{ $message }}</span> @enderror
 
                                                                 </div>
                                                                 <div class="form-group mt-3">
@@ -134,6 +157,23 @@
                                                                         <option value="0">Inactive</option>
 
                                                                     </select>
+                                                                    @error('status') <span class="error">{{ $message }}</span> @enderror
+                                                                </div>
+                                                                <div class="form-group mt-3">
+                                                                    <div class="">
+                                                                        <label for="greyIcon" class="form-label">Grey Icon File</label>
+                                                                        <input class="form-control" type="file" id="greyIcon" name="grey-icon">
+                                                                    </div>
+                                                                    @error('grey-icon') <span class="error">{{ $message }}</span> @enderror
+                                                                </div>
+                                                                <div class="form-group mt-3">
+                                                                    <div class="">
+                                                                        <label for="orangeIcon" class="form-label">Orange Icon File</label>
+                                                                        <input class="form-control" type="file" id="orangeIcon" name="orange-icon">
+                                                                        @error('orange-icon') <span class="error">{{ $message }}</span> @enderror
+                                                                        <small>Please not that the grey and orange icon must be the same size. The file
+                                                                            type must be transparent png</small>
+                                                                    </div>
                                                                 </div>
 
                                                             </form>
@@ -154,6 +194,8 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>NAME</th>
+                                    <th>IMAGE</th>
+                                    <th>HOVER IMAGE</th>
                                     <th>POSTS</th>
                                     <th>CREATED ON</th>
                                     <th>ACTION</th>

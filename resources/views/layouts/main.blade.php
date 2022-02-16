@@ -364,6 +364,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Careers</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('login')}}">Login</a>
+                </li>
             </ul>
         </div>
         <div class="col-11 col-md-3 mx-auto">
