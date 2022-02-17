@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Status;
 use Illuminate\Http\Request;
 
-class MainController extends Controller
+class AdminBlogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +18,9 @@ class MainController extends Controller
     public function index()
     {
         //
-        $categories=Category::limit(4)->get();
-        return  view('welcome',compact('categories'));
+        $statuses=Status::all();
+        $categories=Category::all();
+        return  view('admin.blogs.index', compact('statuses','categories'));
     }
 
     /**
@@ -27,6 +31,8 @@ class MainController extends Controller
     public function create()
     {
         //
+        $categories=Category::pluck('name','id');
+        return  view('admin.blogs.create',compact('categories'));
     }
 
     /**
@@ -49,6 +55,9 @@ class MainController extends Controller
     public function show($id)
     {
         //
+        $statuses=Status::pluck('name','id');
+        $post=Blog::findBySlugOrFail($id);
+        return  view('admin.blogs.show', compact('post','statuses'));
     }
 
     /**
@@ -60,6 +69,9 @@ class MainController extends Controller
     public function edit($id)
     {
         //
+        $categories=Category::pluck('name','id');
+        $post=Blog::findOrfail($id);
+        return view('admin.blogs.edit', compact('post','categories'));
     }
 
     /**
@@ -84,4 +96,6 @@ class MainController extends Controller
     {
         //
     }
+
+
 }

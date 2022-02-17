@@ -10,9 +10,9 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class News extends Model implements HasMedia
+class Blog extends Model implements HasMedia
 {
-    use HasFactory, InteractsWithMedia,Sluggable,SluggableScopeHelpers;
+    use HasFactory, InteractsWithMedia, Sluggable, SluggableScopeHelpers;
     /**
      * Return the sluggable configuration array for this model.
      *
@@ -26,6 +26,7 @@ class News extends Model implements HasMedia
             ]
         ];
     }
+
     protected $fillable=[
         'title',
         'content',
@@ -35,12 +36,21 @@ class News extends Model implements HasMedia
         'imageAlt',
         'imageTitle',
         'status_id',
-        'imageCredit'
+        'imageCredit',
+        'category_id'
 
     ];
-
-    public function users(){
-        return $this->belongsTo(User::class);
+    public function user(){
+        return $this->belongsTo(User::class,'user_id');
+    }
+    public function status(){
+        return $this->belongsTo(Status::class);
+    }
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+    public function review(){
+        return $this->belongsTo(User::class,'review_id');
     }
     public function registerMediaCollections(): void
     {
@@ -49,7 +59,9 @@ class News extends Model implements HasMedia
             ->registerMediaConversions(function (Media $media) {
                 $this
                     ->addMediaConversion('imageCard-icon')
-                    ->height(300);
+                    ->width(380);
+                $this->addMediaConversion('blog-thumb')
+                    ->width(650);
             });
     }
 }

@@ -55,38 +55,22 @@
         <section class="explore-by m-5">
             <div>
                 <h1 class="text-uppercase fs-4">Explore by
-                    <a href="#" class="float-end text-decoration-none"><span>See All<i class="fa-solid fa-angle-right ms-1"></i></span></a>
+                    <a href="{{route('explore.index')}}" class="float-end text-decoration-none" title="Explore Categories">
+                        <span>See All<i class="fa-solid fa-angle-right ms-1"></i></span></a>
                 </h1>
                 <hr class="">
                 <div class="row mt-5 mb-5 pt-3">
+                    @foreach($categories as $category)
                     <div class="col-6 col-md-3 text-center">
-                        <a href="#" class="text-decoration-none">
-                            <img src="images/nutrition.png" class="img-fluid" style="height: 80px" onmouseover="this.src='images/nutrition-2.png'"
-                                 onmouseout="this.src='images/nutrition.png'">
-                            <h2 class="fs-4">Nutirition</h2>
+                        <a href="{{route('explore.show',$category->slug)}}" class="text-decoration-none" title="{{$category->name}}">
+                            <img src="{{asset($category->getFirstMediaUrl('grey-icon'))}}" class="img-fluid" style="height: 80px"
+                                 onmouseover="this.src='{{asset($category->getFirstMediaUrl('orange-icon'))}}'"
+                                 onmouseout="this.src='{{asset($category->getFirstMediaUrl('grey-icon'))}}'">
+                            <h2 class="fs-4">{{$category->name}}</h2>
                         </a>
                     </div>
-                    <div class="col-6 col-md-3 text-center">
-                        <a href="#" class="text-decoration-none">
-                            <img src="images/mental.png" class="img-fluid" style="height: 80px" onmouseover="this.src='images/mental-2.png'"
-                                 onmouseout="this.src='images/mental.png'">
-                            <h2 class="fs-4">Mental Health</h2>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-3 text-center">
-                        <a href="#" class="text-decoration-none">
-                            <img src="images/sleep.png" class="img-fluid" style="height: 80px" onmouseover="this.src='images/sleep-2.png'"
-                                 onmouseout="this.src='images/sleep.png'">
-                            <h2 class="fs-4">Sleep</h2>
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-3 text-center">
-                        <a href="#" class="text-decoration-none">
-                            <img src="images/fitness.png" class="img-fluid" style="height: 80px" onmouseover="this.src='images/fitness-2.png'"
-                                 onmouseout="this.src='images/fitness.png'">
-                            <h2 class="fs-4">Fitness</h2>
-                        </a>
-                    </div>
+                    @endforeach
+
                 </div>
 
             </div>

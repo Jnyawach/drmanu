@@ -27,7 +27,7 @@
     </div>
     <div wire:ignore class="form-group mt-3">
         <label for="summary" class="control-label">Content:</label>
-        <textarea wire:model="content" name="content" id="content" class="form-control"></textarea>
+        <textarea wire:model.lazy="content" name="content" id="content" class="form-control"></textarea>
         @error('content') <span class="error">{{ $message }}</span> @enderror<br>
         <small>Should contain at least one Keyword in the first 150 words</small>
     </div>
@@ -61,6 +61,16 @@
                 post</small>
             <small>For Example How are COVID-19 deaths counted</small>
         </div>
+        <div class="form-group mt-3">
+            <label for="title" class="control-label">
+                Image Credit:
+            </label>
+            <input type="text" name="imageCredit" wire:model="imageCredit" id="imageCredit" required
+                   class="form-control">
+            @error('imageCredit') <span class="error">{{ $message }}</span> @enderror<br>
+            <small>Should not exceed 50 Characters </small>
+            <small>For Example Elpidio Costa Junior/Getty Images</small>
+        </div>
 
         <div class="form-group mt-3">
             <button class="btn btn-primary" type="submit">Publish for Review</button>
@@ -76,12 +86,8 @@
 </form>
     <script src="{{asset('ckeditor5/ckeditor.js')}}"></script>
     <script>
-
         ClassicEditor
-            .create(document.querySelector('#content')),{
-            plugins: [ ImageInsert ],
-            toolbar: [  'insertImage' ]
-        }
+            .create(document.querySelector('#content'))
             .then(editor => {
                 editor.model.document.on('change:data', () => {
                 @this.set('content', editor.getData());
@@ -90,6 +96,5 @@
             .catch(error => {
                 console.error(error);
             });
-
     </script>
 </div>

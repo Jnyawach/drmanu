@@ -27,4 +27,7 @@ class Category extends Model implements HasMedia
     }
 
     protected $fillable=['name','status'];
+    public function blogs(){
+        return $this->hasMany(Blog::class);
+    }
 }

@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\General;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use function view;
 
-class MainController extends Controller
+class ExploreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,7 @@ class MainController extends Controller
     public function index()
     {
         //
-        $categories=Category::limit(4)->get();
-        return  view('welcome',compact('categories'));
+        return  view('explore.index');
     }
 
     /**
@@ -49,6 +50,8 @@ class MainController extends Controller
     public function show($id)
     {
         //
+        $category=Category::findBySlugOrFail($id);
+        return  view('explore.show', compact('category'));
     }
 
     /**

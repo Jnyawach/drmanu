@@ -24,17 +24,37 @@ use App\Http\Controllers\Admin\AdminPolicyController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\AdminSubscriptionController;
 use App\Http\Controllers\Admin\AdminNewsController;
+use App\Http\Controllers\Admin\AdminBlogController;
+use App\Http\Controllers\Admin\PostStatusController;
+use App\Http\Controllers\Admin\PostCategoryController;
+use App\Http\Controllers\Admin\BlogStatus;
+
+
 
 /*General Routes*/
 use App\Http\Controllers\General\ContactController;
+use \App\Http\Controllers\General\imageUpload;
+use \App\Http\Controllers\General\ExploreController;
+use \App\Http\Controllers\General\ArticlesController;
+use \App\Http\Controllers\General\ResourcesController;
+use \App\Http\Controllers\General\NewsletterController;
 
 Auth::routes();
 Route::resource('/',MainController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group([],function (){
+    Route::resource('newsletter',NewsletterController::class);
+    Route::resource('resources',ResourcesController::class);
+    Route::resource('articles',ArticlesController::class);
+    Route::resource('explore',ExploreController::class);
     Route::resource('contact',ContactController::class);
+    Route::post('image-upload',['as'=>'image-upload','uses'=>imageUpload::class]);
 });
 Route::group(['middleware'=>'auth'], function (){
+    Route::patch('blog-status/{id}',['as'=>'blog-status','uses'=>BlogStatus::class]);
+    Route::get('admin/blogs/post-status/{id}',['as'=>'post-status','uses'=>PostStatusController::class]);
+    Route::get('admin/blogs/post-category/{id}',['as'=>'post-category','uses'=>PostCategoryController::class]);
+    Route::resource('admin/blogs',AdminBlogController::class);
     Route::resource('admin/news',AdminNewsController::class);
     Route::resource('admin/subscriptions',AdminSubscriptionController::class);
     Route::resource('admin/messages',AdminContactController::class);

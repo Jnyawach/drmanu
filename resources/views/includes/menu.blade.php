@@ -1,0 +1,3 @@
+@livewireStyles
+@livewire('menu')
+@livewireScripts

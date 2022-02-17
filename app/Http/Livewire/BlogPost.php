@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Blog;
 use App\Models\News;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class PostNews extends Component
+class BlogPost extends Component
 {
     use WithFileUploads;
     public $title;
@@ -19,22 +20,24 @@ class PostNews extends Component
     public $imageAlt;
     public $imageTitle;
     public $imageCredit;
+    public $category;
     public $categories;
     public $statuses;
     public $success=false;
-
-
     protected $rules=[
-        /*'category'=>'required|integer|max:10',*/
+        'category'=>'required|integer|max:10',
         'title'=>'required|min:10|string|max:120',
         'imageCredit'=>'required|min:10|string|max:120',
         'summary'=>'required|min:10|string|max:500',
         'tags'=>'required|min:10|string|max:255',
         'content'=>'required',
-        'imageCard'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'imageCard'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048|dimensions:width=1200,height=800',
         'imageAlt'=>'required|min:10|string|max:120',
         'imageTitle'=>'required|min:10|string|max:120',
 
+    ];
+    protected $message=[
+        'image.dimensions'=>'The image dimensions should be strictly 1200px by 800px'
     ];
     public function updated($propertyName)
     {
@@ -47,12 +50,15 @@ class PostNews extends Component
         $this->imageAlt=null;
         $this->tags=null;
         $this->imageTitle=null;
-    }
+        $this->imageCredit=null;
+        $this->imageCard=null;
+        $this->category=null;
 
-    public function createNews(){
+    }
+    public function createPost(){
 
         $this->validate();
-        $news=News::create([
+        $news=Blog::create([
             'title'=>$this->title,
             'summary'=>$this->summary,
             'tags'=>$this->tags,
@@ -61,6 +67,8 @@ class PostNews extends Component
             'imageTitle'=>$this->imageTitle,
             'status_id'=>1,
             'user_id'=>Auth::id(),
+            'category_id'=>$this->category,
+            'imageCredit'=>$this->imageCredit,
 
         ]);
         if($files=$this->imageCard){
@@ -69,9 +77,8 @@ class PostNews extends Component
         $this->clearForm();
         $this->success="Post Successfully created";
     }
-
     public function render()
     {
-        return view('livewire.post-news');
+        return view('livewire.blog-post');
     }
 }

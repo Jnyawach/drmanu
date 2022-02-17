@@ -268,17 +268,17 @@ a h2:hover{
 .explore h6:hover{
     text-decoration: underline;
 }
-.search input[type=text],.input-group-text{
+.search input[type=search],.input-group-text{
     background: none;
     border: 2px solid var(--junior);
     color: var(--junior);
     height: 45px;
-    border-radius: 30px;
+
 }
 .input-group-text{
     border-left: none;
 }
-.search input[type=text]{
+.search input[type=search]{
     border-right: none;
 }
 

@@ -33,7 +33,10 @@
         <div class="col-8">
             <ul class="nav justify-content-end admin-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#"><i class="far fa-envelope"></i></a>
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{route('messages.index')}}"><i class="far fa-envelope"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"><i class="far fa-bell"></i></a>
@@ -193,12 +196,12 @@
                 <div id="flush-collapseNine" class="accordion-collapse collapse" aria-labelledby="flush-collapseNine" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <ul class="list-unstyled folders">
-                            <li><a href="#" title="Admins">Manage Blog</a> </li>
+                            <li><a href="{{route('blogs.index')}}" title="Admins">Manage Blog</a> </li>
 
 
                         </ul>
                         <ul class="list-unstyled folders">
-                            <li><a href="#" title="Admins">Create Posts</a> </li>
+                            <li><a href="{{route('blogs.create')}}" title="Admins">Create Posts</a> </li>
 
                         </ul>
 

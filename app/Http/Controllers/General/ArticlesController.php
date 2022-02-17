@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\General;
 
-use App\Models\Category;
+use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
-class MainController extends Controller
+class ArticlesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,6 @@ class MainController extends Controller
     public function index()
     {
         //
-        $categories=Category::limit(4)->get();
-        return  view('welcome',compact('categories'));
     }
 
     /**
@@ -49,6 +48,8 @@ class MainController extends Controller
     public function show($id)
     {
         //
+        $post=Blog::findBySlugOrFail($id);
+        return view('articles.show', compact('post'));
     }
 
     /**
