@@ -4,50 +4,34 @@
     <main>
         <section class="intro ">
             <div class="row mt-5">
+
                 <div class="col-11 col-md-5 mx-auto">
-                    <a href="#" title="Read More" class="text-decoration-none m-2">
-                        <img src="images/vaccination-g61f02f055_640.jpg" class="img-fluid curved mb-3">
-                        <h2>The Workplace Discrimination Many Women Face After a Miscarriage</h2>
-                        <h6 class="ms-2 text-uppercase">General Health may 6, 2021</h6>
+
+                    <a href="{{route('articles.show',$intro->title)}}" title="{{$intro->title}}" class="text-decoration-none m-2">
+                        <img src="{{asset($intro->getFirstMediaUrl('imageCard')? $intro->getFirstMediaUrl('imageCard','blog-thumb'):'/images/no-image.png' )}}" class="img-fluid curved mb-3"
+                        alt="{{$intro->imageAlt}}" title="{{$intro->imageTitle}}">
+                        <h2>{{$intro->title}}</h2>
+                        <h6 class="ms-2 text-uppercase">{{$intro->category->name}}: {{$intro->created_at->diffForHumans()}}</h6>
                     </a>
+
 
                 </div>
+
                 <div class="col-11 col-md-6 mx-auto">
-                    <a href="#" class="text-decoration-none m-2">
+                    @foreach($header as $head)
+                    <a href="{{route('articles.show',$head->title)}}" class="text-decoration-none m-2" title="{{$head->title}}">
                         <div class="row">
                             <div class="col-4 col-md-3">
-                                <img src="images/females-marching-protest-732-549-feature-thumb.jpg" class="img-fluid curved">
+                                <img src="{{asset($head->getFirstMediaUrl('imageCard')? $head->getFirstMediaUrl('imageCard','blog-thumb'):'/images/no-image.png' )}}" class="img-fluid curved"
+                                title="{{$head->title}}" alt="{{$head->imageTitle}}">
                             </div>
                             <div class="col-8">
-                                <h2 class="fs-4">The Workplace Discrimination Many Women Face After a Miscarriage</h2>
-                                <h6 class="ms-2 text-uppercase">Fitness may 6, 2021</h6>
+                                <h2 class="fs-4">{{$head->title}}</h2>
+                                <h6 class="ms-2 text-uppercase">{{$head->category->name}}: {{$head->created_at->diffForHumans()}}</h6>
                             </div>
                         </div>
                     </a>
-                    <a href="#" class="text-decoration-none m-2">
-                        <div class="row">
-                            <div class="col-4 col-md-3">
-                                <img src="images/protective-suit-g6cca1e4d8_640.jpg" class="img-fluid curved">
-                            </div>
-                            <div class="col-8">
-                                <h2 class="fs-4">The Workplace Discrimination Many Women Face After a Miscarriage</h2>
-                                <h6 class="ms-2 text-uppercase">Mental Health may 6, 2021</h6>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#" class="text-decoration-none m-2">
-                        <div class="row">
-                            <div class="col-4 col-md-3">
-                                <img src="images/face-mask-g9ebb9151f_640.jpg" class="img-fluid curved">
-                            </div>
-                            <div class="col-8">
-                                <h2 class="fs-4">The Workplace Discrimination Many Women Face After a Miscarriage</h2>
-                                <h6 class="ms-2 text-uppercase">Sleep may 6, 2021</h6>
-                            </div>
-                        </div>
-                    </a>
-
-
+                    @endforeach
                 </div>
             </div>
 
@@ -79,58 +63,23 @@
             <h1 class="text-uppercase fs-4">For You</h1>
             <hr>
             <div class="row">
+                @foreach($you as $post)
                 <div class="col-12 col-lg-6">
-                    <a href="#" class="text-decoration-none m-2">
+                    <a href="{{route('articles.show',$post->slug)}}" class="text-decoration-none m-2">
                         <div class="row">
                             <div class="col-4 col-md-3">
-                                <img src="images/females-marching-protest-732-549-feature-thumb.jpg" class="img-fluid curved">
+                                <img src="{{asset($post->getFirstMediaUrl('imageCard')? $post->getFirstMediaUrl('imageCard','blog-thumb'):'/images/no-image.png' )}}" class="img-fluid curved"
+                                alt="{{$post->imageAlt}}" title="{{$post->imageTitle}}">
                             </div>
                             <div class="col-8">
-                                <h2 class="fs-4">The Workplace Discrimination Many Women Face After a Miscarriage</h2>
+                                <h2 class="fs-4">{{$post->title}}</h2>
                                 <h6 class="ms-2 text-uppercase">Fitness may 6, 2021</h6>
                             </div>
                         </div>
                     </a>
                 </div>
-                <div class="col-12 col-lg-6">
-                    <a href="#" class="text-decoration-none m-2">
-                        <div class="row">
-                            <div class="col-4 col-md-3">
-                                <img src="images/females-marching-protest-732-549-feature-thumb.jpg" class="img-fluid curved">
-                            </div>
-                            <div class="col-8">
-                                <h2 class="fs-4">The Workplace Discrimination Many Women Face After a Miscarriage</h2>
-                                <h6 class="ms-2 text-uppercase">Fitness may 6, 2021</h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <a href="#" class="text-decoration-none m-2">
-                        <div class="row">
-                            <div class="col-4 col-md-3">
-                                <img src="images/females-marching-protest-732-549-feature-thumb.jpg" class="img-fluid curved">
-                            </div>
-                            <div class="col-8">
-                                <h2 class="fs-4">The Workplace Discrimination Many Women Face After a Miscarriage</h2>
-                                <h6 class="ms-2 text-uppercase">Fitness may 6, 2021</h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-12 col-lg-6">
-                    <a href="#" class="text-decoration-none m-2">
-                        <div class="row">
-                            <div class="col-4 col-md-3">
-                                <img src="images/females-marching-protest-732-549-feature-thumb.jpg" class="img-fluid curved">
-                            </div>
-                            <div class="col-8">
-                                <h2 class="fs-4">The Workplace Discrimination Many Women Face After a Miscarriage</h2>
-                                <h6 class="ms-2 text-uppercase">Fitness may 6, 2021</h6>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+                @endforeach
+
             </div>
             <div class="subscribe p-5">
 
@@ -143,35 +92,16 @@
             <h1 class="text-uppercase fs-4">Most Trending</h1>
             <hr>
             <div class="row mt-5">
+                @foreach($trending as $post)
                 <div class="col-11 col-md-4 col-lg-3 p-2">
                     <a href="#" title="Read More" class="text-decoration-none">
-                        <img src="images/vaccine-g9286d6a2a_640.jpg" class="img-fluid mb-2 curved" alt="#">
-                        <h2 class="fs-5">How Adding 10 Minutes of Exercise a Day Can Boost Your Health</h2>
+                        <img src="{{asset($post->getFirstMediaUrl('imageCard')? $post->getFirstMediaUrl('imageCard','blog-thumb'):'/images/no-image.png' )}}" class="img-fluid curved mb-2"
+                             alt="{{$post->imageAlt}}" title="{{$post->imageTitle}}">
+                        <h2 class="fs-5">{{$post->title}}</h2>
                     </a>
 
                 </div>
-                <div class="col-11 col-md-4 col-lg-3 p-2">
-                    <a href="#" title="Read More" class="text-decoration-none">
-                        <img src="images/vaccine-g9286d6a2a_640.jpg" class="img-fluid mb-2 curved" alt="#">
-                        <h2 class="fs-5">How Adding 10 Minutes of Exercise a Day Can Boost Your Health</h2>
-                    </a>
-
-                </div>
-                <div class="col-11 col-md-4 col-lg-3 p-2">
-                    <a href="#" title="Read More" class="text-decoration-none">
-                        <img src="images/vaccine-g9286d6a2a_640.jpg" class="img-fluid mb-2 curved" alt="#">
-                        <h2 class="fs-5">How Adding 10 Minutes of Exercise a Day Can Boost Your Health</h2>
-                    </a>
-
-                </div>
-                <div class="col-11 col-md-4 col-lg-3 p-2">
-                    <a href="#" title="Read More" class="text-decoration-none">
-                        <img src="images/vaccine-g9286d6a2a_640.jpg" class="img-fluid mb-2 curved" alt="#">
-                        <h2 class="fs-5">How Adding 10 Minutes of Exercise a Day Can Boost Your Health</h2>
-                    </a>
-
-                </div>
-
+                @endforeach
             </div>
         </section>
         <section class="resources m-5 pt-3">

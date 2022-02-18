@@ -234,13 +234,13 @@
                 <h2 class="accordion-header" id="flush-headingEleven">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseEleven" aria-expanded="false"
                             aria-controls="flush-collapseEleven">
-                        <i class="fab fa-sketch me-2"></i>Interface
+                        <i class="fab fa-sketch me-2"></i>Sections
                     </button>
                 </h2>
                 <div id="flush-collapseEleven" class="accordion-collapse collapse" aria-labelledby="flush-collapseEleven" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <ul class="list-unstyled folders">
-                            <li><a href="#" title="Admins">Design Interface</a> </li>
+                            <li><a href="{{route('sections.index')}}" title="Admins">Create Sections</a> </li>
 
                         </ul>
 
@@ -286,7 +286,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 @yield('scripts')
-@livewireScripts
+
 </body>
 </html>
 

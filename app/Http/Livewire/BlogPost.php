@@ -31,7 +31,7 @@ class BlogPost extends Component
         'summary'=>'required|min:10|string|max:500',
         'tags'=>'required|min:10|string|max:255',
         'content'=>'required',
-        'imageCard'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048|dimensions:width=1200,height=800',
+        'imageCard'=>'required|image|mimes:jpeg,png,jpg,gif|max:2048|dimensions:width=800,height=550',
         'imageAlt'=>'required|min:10|string|max:120',
         'imageTitle'=>'required|min:10|string|max:120',
 

@@ -28,6 +28,9 @@ use App\Http\Controllers\Admin\AdminBlogController;
 use App\Http\Controllers\Admin\PostStatusController;
 use App\Http\Controllers\Admin\PostCategoryController;
 use App\Http\Controllers\Admin\BlogStatus;
+use App\Http\Controllers\Admin\AdminSectionController;
+use App\Http\Controllers\Admin\AttachPost;
+use App\Http\Controllers\Admin\DettachPost;
 
 
 
@@ -38,11 +41,13 @@ use \App\Http\Controllers\General\ExploreController;
 use \App\Http\Controllers\General\ArticlesController;
 use \App\Http\Controllers\General\ResourcesController;
 use \App\Http\Controllers\General\NewsletterController;
+use \App\Http\Controllers\General\PrivacyPolicy;
 
 Auth::routes();
 Route::resource('/',MainController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group([],function (){
+    Route::resource('privacy_policy',PrivacyPolicy::class);
     Route::resource('newsletter',NewsletterController::class);
     Route::resource('resources',ResourcesController::class);
     Route::resource('articles',ArticlesController::class);
@@ -51,6 +56,10 @@ Route::group([],function (){
     Route::post('image-upload',['as'=>'image-upload','uses'=>imageUpload::class]);
 });
 Route::group(['middleware'=>'auth'], function (){
+    Route::patch('post-unlink/{id}',['as'=>'post-unlink','uses'=>DettachPost::class]);
+    Route::patch('post-link/{id}',['as'=>'post-link','uses'=>AttachPost::class]);
+    Route::get('admin/sections/attach-post/{id}',[AdminSectionController::class, 'attachPost'])->name('attach-post');
+    Route::resource('admin/sections',AdminSectionController::class);
     Route::patch('blog-status/{id}',['as'=>'blog-status','uses'=>BlogStatus::class]);
     Route::get('admin/blogs/post-status/{id}',['as'=>'post-status','uses'=>PostStatusController::class]);
     Route::get('admin/blogs/post-category/{id}',['as'=>'post-category','uses'=>PostCategoryController::class]);

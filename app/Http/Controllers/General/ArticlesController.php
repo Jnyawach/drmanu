@@ -49,7 +49,9 @@ class ArticlesController extends Controller
     {
         //
         $post=Blog::findBySlugOrFail($id);
-        return view('articles.show', compact('post'));
+        $blogs=Blog::where('category_id',$post->category_id)
+        ->latest()->limit(20)->get();
+        return view('articles.show', compact('post', 'blogs'));
     }
 
     /**

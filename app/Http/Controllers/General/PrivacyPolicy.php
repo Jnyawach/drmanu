@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\General;
 
-use App\Models\Blog;
-use App\Models\Category;
-use App\Models\Section;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MainController extends Controller
+class PrivacyPolicy extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +15,7 @@ class MainController extends Controller
     public function index()
     {
         //
-        $categories=Category::limit(4)->get();
-        $posts=Blog::where('status_id',2)->latest()->limit(12)->get();
-        $intro=$posts[0];
-        $header=$posts->slice(1,3);
-        $you=$posts->slice(4,4);
-        $trending=$posts->slice(8,4);
-
-
-        return  view('welcome',
-            compact('categories','intro','header','you','trending'));
+        return  view('privacy_policy.index');
     }
 
     /**

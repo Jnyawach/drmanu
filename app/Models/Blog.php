@@ -49,8 +49,11 @@ class Blog extends Model implements HasMedia
     public function category(){
         return $this->belongsTo(Category::class);
     }
-    public function review(){
-        return $this->belongsTo(User::class,'review_id');
+    public function sections(){
+        return $this->belongsToMany(Section::class,'section_blog');
+    }
+    public function reviews(){
+        return $this->hasMany(Review::class);
     }
     public function registerMediaCollections(): void
     {

@@ -41,16 +41,40 @@
             </div>
             <div wire:ignore class="form-group mt-3">
                 <label for="summary" class="control-label">Content:</label>
-                <textarea wire:model.lazy="content" name="content" id="content" class="form-control"></textarea>
+                <div wire:ignore class="form-group mt-3 ">
+                    <label for="content" class="control-label">Content:</label>
+                    <div
+                        class="form-textarea w-full"
+                        x-data
+                        x-init="
+                         ClassicEditor.create($refs.myIdentifierHere)
+                        .then( function(editor){
+                            editor.model.document.on('change:data', () => {
+                               $dispatch('input', editor.getData())
+                            })
+                        })
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                    "
+                        wire:ignore
+                        wire:key="myIdentifierHere"
+                        x-ref="myIdentifierHere"
+                        wire:model.debounce.9999999ms="content"
+                    >{!! $content !!}</div>
+                    @error('content') <span class="error">{{ $message }}</span> @enderror<br>
+                    <small>Should contain at least one Keyword in the first 150 words</small>
+                </div>
                 @error('content') <span class="error">{{ $message }}</span> @enderror<br>
                 <small>Should contain at least one Keyword in the first 150 words</small>
             </div>
             <div class="form-group mt-3 row">
                 <div class="col-md-6">
                     <label for="imageCard" class="form-label">Post Image:</label>
+
                     <input class="form-control" type="file" id="imageCard" name="imageCard" wire:model="imageCard">
                     @error('imageCard') <span class="error">{{ $message }}</span> @enderror<br>
-                    <small>Should be a banner image Size 1200px by 800px </small>
+                    <small>Should be a banner image Size 800px by 550px </small>
                 </div>
                 <div class="form-group mt-3">
                     <label for="title" class="control-label">
@@ -92,6 +116,9 @@
                 <div class="mt-2">
                     @if($success)
                         <p class="text-success">{{$success}}</p>
+                        <a href="{{route('blogs.index')}}" class="btn btn-link">
+                            Return Home
+                        </a>
                     @endif
                 </div>
 
@@ -99,18 +126,7 @@
             </div>
         </form>
         <script src="{{asset('ckeditor5/ckeditor.js')}}"></script>
-        <script>
-            ClassicEditor
-                .create(document.querySelector('#content'))
-                .then(editor => {
-                    editor.model.document.on('change:data', () => {
-                    @this.set('content', editor.getData());
-                    })
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-        </script>
+
     </div>
 
 </div>

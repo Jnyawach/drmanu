@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Blog;
-use App\Models\Category;
 use App\Models\Section;
 use Illuminate\Http\Request;
 
-class MainController extends Controller
+class AdminSectionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,16 +17,8 @@ class MainController extends Controller
     public function index()
     {
         //
-        $categories=Category::limit(4)->get();
-        $posts=Blog::where('status_id',2)->latest()->limit(12)->get();
-        $intro=$posts[0];
-        $header=$posts->slice(1,3);
-        $you=$posts->slice(4,4);
-        $trending=$posts->slice(8,4);
-
-
-        return  view('welcome',
-            compact('categories','intro','header','you','trending'));
+        $sections=Section::all();
+        return view('admin.sections.index', compact('sections'));
     }
 
     /**
@@ -48,6 +40,11 @@ class MainController extends Controller
     public function store(Request $request)
     {
         //
+        $validated=$request->validate(['section'=>'required|string|max:50']);
+
+        $section=Section::create(['name'=>$validated['section']]);
+        return  redirect()->back()
+            ->with('status','Section created Successfully');
     }
 
     /**
@@ -59,6 +56,8 @@ class MainController extends Controller
     public function show($id)
     {
         //
+        $section=Section::findOrFail($id);
+        return  view('admin.sections.show', compact('section'));
     }
 
     /**
@@ -82,6 +81,12 @@ class MainController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $section=Section::findOrFail($id);
+        $validated=$request->validate(['section'=>'required|string|max:50']);
+
+        $section->update(['name'=>$validated['section']]);
+        return  redirect()->back()
+            ->with('status','Section Updated Successfully');
     }
 
     /**
@@ -93,5 +98,16 @@ class MainController extends Controller
     public function destroy($id)
     {
         //
+        $section=Section::findOrFail($id);
+        $section->delete();
+        return  redirect()->back()
+            ->with('status','Section Deleted Successfully');
+    }
+
+    public function attachPost ($id){
+        //Product add to promotion
+        $section=Section::findOrFail($id);
+        $blogs=Blog::where('status_id',2)->get();
+        return view('admin/sections/attach-post',compact('blogs','section'));
     }
 }

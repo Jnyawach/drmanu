@@ -11,6 +11,7 @@
                 <h2 class="fs-4">Edit Blog Post</h2>
                 <hr>
                 @livewire('blog-edit',['categories'=>$categories,'post'=>$post])
+
             </div>
 
         </div>
@@ -19,7 +20,8 @@
 @endsection
 @section('scripts')
 
-    @livewirescripts
+    @livewireScripts
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
 @endsection
 
 
