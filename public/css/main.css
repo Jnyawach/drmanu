@@ -294,6 +294,14 @@ a h2:hover{
 .explore-by a:hover h2{
     color: var(--bright);
 }
+.topics{
+    color: var(--bright);
+    font-size: 18px;
+    font-weight: bold;
+}
+.topics:hover{
+    color: var(--junior);
+}
 .subscribe{
     background-color: var(--backdrop);
 }

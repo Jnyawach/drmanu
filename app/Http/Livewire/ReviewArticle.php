@@ -8,7 +8,7 @@ use Livewire\Component;
 class ReviewArticle extends Component
 {
     public $post;
-    public $review=0;
+    public $review;
     public $name;
     public $email;
     public $comment;
@@ -31,7 +31,7 @@ class ReviewArticle extends Component
         $blog->reviews()->create([
             'name'=>$this->name,
             'email'=>$this->email,
-            'review'=>$this->review,
+            'review'=>0,
             'comment'=>$this->comment
         ]);
         $this->clearForm();

@@ -253,13 +253,17 @@
                 <h2 class="accordion-header" id="flush-headingTwelve">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false"
                             aria-controls="flush-collapseTwelve">
-                        <i class="fas fa-gift me-2"></i>Coupon
+                        <i class="fas fa-gift me-2"></i>Resources
                     </button>
                 </h2>
                 <div id="flush-collapseTwelve" class="accordion-collapse collapse" aria-labelledby="flush-collapseTwelve" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <ul class="list-unstyled folders">
-                            <li><a href="#" title="Admins">Create & Manage Coupon</a> </li>
+                            <li><a href="{{route('resources.index')}}" title="Admins">Organize Resources</a> </li>
+
+                        </ul>
+                        <ul class="list-unstyled folders">
+                            <li><a href="{{route('resources.create')}}" title="Admins">Create Resources</a> </li>
 
                         </ul>
 

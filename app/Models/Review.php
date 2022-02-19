@@ -9,10 +9,11 @@ class Review extends Model
 {
     use HasFactory;
     protected $fillable=[
-        'blog_id','name','email','comment'
+        'blog_id','name','email','comment','review'
     ];
 
     public function blogs(){
         return $this->belongsTo(Blog::class);
     }
+
 }

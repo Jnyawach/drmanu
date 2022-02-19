@@ -31,6 +31,7 @@ use App\Http\Controllers\Admin\BlogStatus;
 use App\Http\Controllers\Admin\AdminSectionController;
 use App\Http\Controllers\Admin\AttachPost;
 use App\Http\Controllers\Admin\DettachPost;
+use App\Http\Controllers\Admin\AdminResourceController;
 
 
 
@@ -56,6 +57,7 @@ Route::group([],function (){
     Route::post('image-upload',['as'=>'image-upload','uses'=>imageUpload::class]);
 });
 Route::group(['middleware'=>'auth'], function (){
+    Route::resource('admin/resources',AdminResourceController::class);
     Route::patch('post-unlink/{id}',['as'=>'post-unlink','uses'=>DettachPost::class]);
     Route::patch('post-link/{id}',['as'=>'post-link','uses'=>AttachPost::class]);
     Route::get('admin/sections/attach-post/{id}',[AdminSectionController::class, 'attachPost'])->name('attach-post');

@@ -15,15 +15,15 @@
                             <h5 style="font-size: 18px" class="float-start">Categories</h5>
                             <!-- Button trigger modal -->
                             <button class="float-end btn-sm btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">Create Category
+                                    data-bs-target="#createCategoryModal">Create Category
                             </button>
                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            <div class="modal fade" id="#createCategoryModal" tabindex="-1" aria-labelledby="#createCategoryModalLabel"
                                  aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Create Category</h5>
+                                            <h5 class="modal-title" id="#createCategoryModalLabel">Create Category</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                         </div>

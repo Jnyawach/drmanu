@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\General;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use function view;
@@ -17,7 +18,8 @@ class ExploreController extends Controller
     public function index()
     {
         //
-        return  view('explore.index');
+        $categories=Category::all();
+        return  view('explore.index', compact('categories'));
     }
 
     /**
@@ -51,7 +53,13 @@ class ExploreController extends Controller
     {
         //
         $category=Category::findBySlugOrFail($id);
-        return  view('explore.show', compact('category'));
+        $blogs=Blog::where('category_id',$category->id)->where('status_id',2)
+            ->latest()->limit(50)->get();
+        $intro=$blogs[0];
+        $trending=$blogs->slice(2,4);
+        $featured=$blogs->slice(6);
+        return  view('explore.show',
+            compact('category','intro','trending','featured'));
     }
 
     /**

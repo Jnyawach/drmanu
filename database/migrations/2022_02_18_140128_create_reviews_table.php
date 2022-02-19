@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('review');
             $table->bigInteger('blog_id')->unsigned()->index();
             $table->string('name')->nullable();
             $table->string('email')->nullable();

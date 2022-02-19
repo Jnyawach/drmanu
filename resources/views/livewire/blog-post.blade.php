@@ -39,8 +39,8 @@
                 @error('tags') <span class="error">{{ $message }}</span> @enderror<br>
                 <small>A maximum of 15 tags separated by comma. Should contain Keyword</small>
             </div>
-            <div wire:ignore class="form-group mt-3">
-                <label for="summary" class="control-label">Content:</label>
+            <div  class="form-group mt-3">
+
                 <div wire:ignore class="form-group mt-3 ">
                     <label for="content" class="control-label">Content:</label>
                     <div
@@ -65,8 +65,7 @@
                     @error('content') <span class="error">{{ $message }}</span> @enderror<br>
                     <small>Should contain at least one Keyword in the first 150 words</small>
                 </div>
-                @error('content') <span class="error">{{ $message }}</span> @enderror<br>
-                <small>Should contain at least one Keyword in the first 150 words</small>
+
             </div>
             <div class="form-group mt-3 row">
                 <div class="col-md-6">
@@ -76,8 +75,9 @@
                     @error('imageCard') <span class="error">{{ $message }}</span> @enderror<br>
                     <small>Should be a banner image Size 800px by 550px </small>
                 </div>
+            </div>
                 <div class="form-group mt-3">
-                    <label for="title" class="control-label">
+                    <label for="imageAlt" class="control-label">
                         Image Alternative text:
                     </label>
                     <input type="text" name="imageAlt" wire:model="imageAlt" id="imageAlt" required
@@ -123,7 +123,7 @@
                 </div>
 
 
-            </div>
+
         </form>
         <script src="{{asset('ckeditor5/ckeditor.js')}}"></script>
 

@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Blog;
 use App\Models\Category;
-use App\Models\Review;
-use App\Models\Status;
 use Illuminate\Http\Request;
 
-class AdminBlogController extends Controller
+class AdminResourceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +16,7 @@ class AdminBlogController extends Controller
     public function index()
     {
         //
-        $statuses=Status::all();
-        $categories=Category::all();
-        return  view('admin.blogs.index', compact('statuses','categories'));
+        return view('admin.resources.index');
     }
 
     /**
@@ -33,7 +28,7 @@ class AdminBlogController extends Controller
     {
         //
         $categories=Category::pluck('name','id');
-        return  view('admin.blogs.create',compact('categories'));
+        return  view('admin.resources.create', compact('categories'));
     }
 
     /**
@@ -56,10 +51,6 @@ class AdminBlogController extends Controller
     public function show($id)
     {
         //
-        $statuses=Status::pluck('name','id');
-        $post=Blog::findBySlugOrFail($id);
-        $reviews=Review::where('blog_id',$post->id)->paginate(15);
-        return  view('admin.blogs.show', compact('post','statuses','reviews'));
     }
 
     /**
@@ -71,9 +62,6 @@ class AdminBlogController extends Controller
     public function edit($id)
     {
         //
-        $categories=Category::pluck('name','id');
-        $post=Blog::findOrfail($id);
-        return view('admin.blogs.edit', compact('post','categories'));
     }
 
     /**
@@ -98,6 +86,4 @@ class AdminBlogController extends Controller
     {
         //
     }
-
-
 }

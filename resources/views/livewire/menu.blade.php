@@ -1,7 +1,7 @@
 <div>
     <header>
         <section class="pt-3 text-center big-menu">
-            <a href="" class="text-center ">
+            <a href="/" class="text-center ">
                 <img src="{{asset('images/manu-logo.png')}}" class="img-fluid" alt="Dr. Manu Logo" style="height: 60px">
             </a>
             <nav class="navbar navbar-expand-sm menu">

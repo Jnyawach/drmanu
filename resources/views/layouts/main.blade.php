@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Dr. Manu:@yield('title')</title>
+
     <link rel = "icon" href =
     "{{asset('images/Manu-icon-01.jpg')}}"
           type = "image/x-icon">
@@ -22,7 +23,7 @@
         <div class="col-11 col-md-6 mx-auto">
             <div class="row">
                 <div class="col-6 col-md-4">
-                    <a href="#" title="Dr. Manu">
+                    <a href="/" title="Dr. Manu">
                         <img src="{{asset('images/manu-logo-white.png')}}" class="img-fluid" style="width: 150px">
                     </a>
                 </div>

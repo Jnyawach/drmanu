@@ -19,6 +19,15 @@
                 </div>
                 <small class="fst-italic mb-4">Image Credit:{{$post->imageCredit}}</small>
                 <div>{!! $post->content !!}</div>
+                <div class="mt-3">
+                    <div class="social" >
+                        <h6 class="fs-6">Share this article:</h6>
+                        <a href="#" title="Facebook" class="m-2" style="color: black"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" title="Instagram" class="m-2" style="color: black"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" title="Instagram" class="m-2" style="color: black"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" title="Instagram" class="m-2" style="color: black"><i class="fa-brands fa-pinterest-p"></i></a>
+                    </div>
+                </div>
             </div>
             <div class="col-11 col-md-3 mx-auto writer position-relative">
                 <div class="writer-detail">

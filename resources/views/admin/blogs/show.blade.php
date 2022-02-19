@@ -58,8 +58,10 @@
                 <hr>
                 <h1>{{$post->title}}</h1>
                 <div class="hero">
+                    <div>
                     <img src="{{asset($post->getFirstMediaUrl('imageCard')? $post->getFirstMediaUrl('imageCard'):'/images/no-image.png' )}}"
                          class="img-fluid mb-3">
+                    </div>
                     <small>Image credit: {{$post->imageCredit}}</small>
                     <p class="fw-bold">By: <span>{{$post->user->name}} {{$post->user->lastname}}</span> on {{$post->created_at->diffForHumans()}}</p>
                     <p class="fw-bold">Tags: <span>{{$post->tags}}</span></p>
@@ -71,5 +73,27 @@
                 </div>
             </div>
         </div>
+    </section>
+    <section class="reviews p-5">
+        <h2>Article Reviews</h2>
+        <div class="row">
+            @foreach($reviews as $review)
+            <div class="col-11">
+                @if($review->review==1)
+               <h4>Yes: Helpful</h4>
+                @else
+                   <h4 class="text-danger"> No: Not Helpful</h4>
+                @endif
+                    <p><span>Name:</span> {{$review->name}}</p>
+                    <p><span>Email:</span> {{$review->email}}</p>
+                <p>{{$review->comment}}</p>
+                <hr>
+            </div>
+            @endforeach
+        </div>
+        <div>
+            {{$reviews->links('vendor.pagination.custom-pagination-links-view')}}
+        </div>
+
     </section>
 @endsection

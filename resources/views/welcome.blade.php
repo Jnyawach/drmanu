@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title','General Health, Fitness & Wellness Advice')
 @section('content')
-    <main>
+
         <section class="intro ">
             <div class="row mt-5">
 
@@ -22,7 +22,7 @@
                     <a href="{{route('articles.show',$head->title)}}" class="text-decoration-none m-2" title="{{$head->title}}">
                         <div class="row">
                             <div class="col-4 col-md-3">
-                                <img src="{{asset($head->getFirstMediaUrl('imageCard')? $head->getFirstMediaUrl('imageCard','blog-thumb'):'/images/no-image.png' )}}" class="img-fluid curved"
+                                <img src="{{asset($head->getFirstMediaUrl('imageCard')? $head->getFirstMediaUrl('imageCard','imageCard-icon'):'/images/no-image.png' )}}" class="img-fluid curved"
                                 title="{{$head->title}}" alt="{{$head->imageTitle}}">
                             </div>
                             <div class="col-8">
@@ -68,12 +68,12 @@
                     <a href="{{route('articles.show',$post->slug)}}" class="text-decoration-none m-2">
                         <div class="row">
                             <div class="col-4 col-md-3">
-                                <img src="{{asset($post->getFirstMediaUrl('imageCard')? $post->getFirstMediaUrl('imageCard','blog-thumb'):'/images/no-image.png' )}}" class="img-fluid curved"
+                                <img src="{{asset($post->getFirstMediaUrl('imageCard')? $post->getFirstMediaUrl('imageCard','imageCard-icon'):'/images/no-image.png' )}}" class="img-fluid curved"
                                 alt="{{$post->imageAlt}}" title="{{$post->imageTitle}}">
                             </div>
                             <div class="col-8">
                                 <h2 class="fs-4">{{$post->title}}</h2>
-                                <h6 class="ms-2 text-uppercase">Fitness may 6, 2021</h6>
+                                <h6 class="ms-2 text-uppercase">{{$post->category->name}} {{$post->created_at->diffForHumans()}}</h6>
                             </div>
                         </div>
                     </a>
@@ -94,8 +94,8 @@
             <div class="row mt-5">
                 @foreach($trending as $post)
                 <div class="col-11 col-md-4 col-lg-3 p-2">
-                    <a href="#" title="Read More" class="text-decoration-none">
-                        <img src="{{asset($post->getFirstMediaUrl('imageCard')? $post->getFirstMediaUrl('imageCard','blog-thumb'):'/images/no-image.png' )}}" class="img-fluid curved mb-2"
+                    <a href="{{route('articles.show',$post->slug)}}" title="{{$post->title}}" class="text-decoration-none">
+                        <img src="{{asset($post->getFirstMediaUrl('imageCard')? $post->getFirstMediaUrl('imageCard','imageCard-icon'):'/images/no-image.png' )}}" class="img-fluid curved mb-2"
                              alt="{{$post->imageAlt}}" title="{{$post->imageTitle}}">
                         <h2 class="fs-5">{{$post->title}}</h2>
                     </a>
@@ -151,10 +151,10 @@
                     </ul>
                 </div>
                 <div class="col-11 col-md-6 mx-auto">
-                    <img src="images/lens.png" class="img-fluid" alt="#">
+                    <img src="{{asset('images/lens.png')}}" class="img-fluid" alt="Dr. Manu">
                 </div>
             </div>
 
         </section>
-    </main>
+
 @endsection
