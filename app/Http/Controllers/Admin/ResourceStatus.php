@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Status;
 use Illuminate\Http\Request;
 
-class PostCategoryController extends Controller
+class ResourceStatus extends Controller
 {
     /**
      * Handle the incoming request.
@@ -18,8 +17,8 @@ class PostCategoryController extends Controller
     public function __invoke($id)
     {
         //
-        $category=Category::findBySlugOrFail($id);
+        $status=Status::findOrfail($id);
         $statuses=Status::pluck('name','id');
-        return view('admin.blogs.post-category', compact('category','statuses'));
+        return view('admin.resources.resource-status', compact('status','statuses'));
     }
 }

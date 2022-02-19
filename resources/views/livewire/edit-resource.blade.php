@@ -1,5 +1,9 @@
 <div>
-    <form wire:submit.prevent="createResource">
+    <div class="m-3">
+        <img src="{{asset($resource->getFirstMediaUrl('cover')? $resource->getFirstMediaUrl('cover'):'/images/no-image.png' )}}"
+             class="img-fluid mb-3">
+    </div>
+    <form wire:submit.prevent="updateResource">
         <div class="form-group row mt-3">
             <div class="col-12 col-md-6">
                 <label for="category" class="control-label">Category:</label>
@@ -73,7 +77,7 @@
                 <input class="form-control" type="file" id="cover" name="cover" wire:model="cover">
                 @error('cover') <span class="error">{{ $message }}</span> @enderror<br>
                 <small>Should be a banner image Size width 250px by height 350px.
-                This image will be the placeholder for the resource</small>
+                    This image will be the placeholder for the resource</small>
             </div>
         </div>
         <div class="form-group mt-3 row">
@@ -83,9 +87,9 @@
                 <input class="form-control" type="file" id="resourceFile" name="resourceFile" wire:model="resourceFile">
                 @error('resourceFile') <span class="error">{{ $message }}</span> @enderror<br>
                 <small>Upload resource file only when the resource is internal and will be
-                hosted on this server. Else attach the resource link at the link section.
-                If the resource contains multiple files, please zip the files into one folder.
-                Allowed files are<span> .docx .pdf .epub .mp3 .mp4 .avi .mkv .zip .ppt .pptx</span></small>
+                    hosted on this server. Else attach the resource link at the link section.
+                    If the resource contains multiple files, please zip the files into one folder.
+                    Allowed files are<span> .docx .pdf .epub .mp3 .mp4 .avi .mkv .zip .ppt .pptx</span></small>
             </div>
         </div>
         <div class="form-group mt-3">

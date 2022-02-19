@@ -30,4 +30,8 @@ class Category extends Model implements HasMedia
     public function blogs(){
         return $this->hasMany(Blog::class);
     }
+
+    public function resources(){
+        return $this->hasMany(Resource::class);
+    }
 }

@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\General;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Resource;
-use App\Models\Status;
 use Illuminate\Http\Request;
 
-class AdminResourceController extends Controller
+class HealthResourceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +16,7 @@ class AdminResourceController extends Controller
     public function index()
     {
         //
-        $statuses=Status::all();
-        $categories=Category::all();
-        return view('admin.resources.index', compact('statuses','categories'));
+        return  view('health-resources.index');
     }
 
     /**
@@ -31,8 +27,6 @@ class AdminResourceController extends Controller
     public function create()
     {
         //
-        $categories=Category::pluck('name','id');
-        return  view('admin.resources.create', compact('categories'));
     }
 
     /**
@@ -56,8 +50,7 @@ class AdminResourceController extends Controller
     {
         //
         $resource=Resource::findBySlugOrFail($id);
-        $statuses=Status::pluck('name','id');
-            return view('admin.resources.show',compact('resource','statuses'));
+        return  view('health-resources.show',compact('resource'));
     }
 
     /**
@@ -69,9 +62,6 @@ class AdminResourceController extends Controller
     public function edit($id)
     {
         //
-        $categories=Category::pluck('name','id');
-        $resource=Resource::findOrFail($id);
-        return  view('admin.resources.edit', compact('categories','resource'));
     }
 
     /**
@@ -84,16 +74,6 @@ class AdminResourceController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $resource=Resource::findOrFail($id);
-        $validated=$request->validate([
-            'status_id'=>'required|integer|max:10'
-        ]);
-        $resource->update([
-        'status_id'=>$validated['status_id']
-    ]);
-        return redirect()->back()
-            ->with('status','Post Status Updated Successfully');
-
     }
 
     /**

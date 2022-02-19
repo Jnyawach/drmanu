@@ -105,33 +105,23 @@
             </div>
         </section>
         <section class="resources m-5 pt-3">
-            <h1 class="text-uppercase fs-4">Resources</h1>
+            <h1 class="text-uppercase fs-4">Resources
+                <a href="{{route('health-resources.index')}}" class="float-end text-decoration-none" title="Explore Categories">
+                    <span>See All<i class="fa-solid fa-angle-right ms-1"></i></span></a>
+            </h1>
             <hr>
             <div class="row">
+                @foreach($resources as $resource)
                 <div class="col-11 col-sm-6 col-md-3 mx-auto p-2">
-                    <a href="#" title="download">
-                        <img src="images/HL-Fitness_Hub-600x900-Pinterest.jpg" class="img-fluid rounded" alt="#">
+                    <a href="{{route('health-resources.show',$resource->slug)}}" title="Learn More">
+                        <img src="{{asset($resource->getFirstMediaUrl('cover')? $resource->getFirstMediaUrl('cover'):'/images/no-image.png' )}}" class="img-fluid rounded" alt="{{$resource->name}}"
+                        title="{{$resource->title}}">
                     </a>
 
-                </div>
-                <div class="col-11 col-sm-6 col-md-3 mx-auto p-2">
-                    <a href="#" title="download">
-                        <img src="images/HL-Key-Art-ALTG-Heart-Health-Foundation_pinterest_600x900.jpg" class="img-fluid rounded" alt="#">
-                    </a>
 
                 </div>
-                <div class="col-11 col-sm-6 col-md-3 mx-auto p-2">
-                    <a href="#" title="download">
-                        <img src="images/Managing-Your-Mental-Health-During-the-Pandemic-600x900-SPOTLIGHT.jpeg" class="img-fluid rounded" alt="#">
-                    </a>
+                @endforeach
 
-                </div>
-                <div class="col-11 col-sm-6 col-md-3 mx-auto p-2">
-                    <a href="#" title="download">
-                        <img src="images/Type-2-Diabetes-600x900-Pinterest.jpg" class="img-fluid rounded" alt="#">
-                    </a>
-
-                </div>
             </div>
         </section>
 

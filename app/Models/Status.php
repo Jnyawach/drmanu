@@ -14,4 +14,7 @@ class Status extends Model
     public function blogs(){
         return $this->hasMany(Blog::class);
     }
+    public function resources(){
+        return $this->hasMany(Resource::class);
+    }
 }

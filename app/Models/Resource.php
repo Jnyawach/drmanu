@@ -28,4 +28,10 @@ class Resource extends Model implements HasMedia
     public $fillable=[
         'category_id','name','status_id','link', 'description'
     ];
+    public function status(){
+        return $this->belongsTo(Status::class);
+    }
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 }

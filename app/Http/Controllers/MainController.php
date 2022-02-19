@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Resource;
 use App\Models\Section;
 use Illuminate\Http\Request;
 
@@ -23,10 +24,11 @@ class MainController extends Controller
         $header=$posts->slice(1,3);
         $you=$posts->slice(4,4);
         $trending=$posts->slice(8,4);
+        $resources=Resource::where('status_id',2)->latest()->limit(4)->get();
 
 
         return  view('welcome',
-            compact('categories','intro','header','you','trending'));
+            compact('categories','intro','header','you','trending','resources'));
     }
 
     /**

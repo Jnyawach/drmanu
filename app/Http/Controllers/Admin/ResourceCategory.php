@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Status;
 use Illuminate\Http\Request;
 
-class PostCategoryController extends Controller
+class ResourceCategory extends Controller
 {
     /**
      * Handle the incoming request.
@@ -20,6 +20,6 @@ class PostCategoryController extends Controller
         //
         $category=Category::findBySlugOrFail($id);
         $statuses=Status::pluck('name','id');
-        return view('admin.blogs.post-category', compact('category','statuses'));
+        return view('admin.resources.resource-category', compact('category','statuses'));
     }
 }

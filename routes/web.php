@@ -32,6 +32,8 @@ use App\Http\Controllers\Admin\AdminSectionController;
 use App\Http\Controllers\Admin\AttachPost;
 use App\Http\Controllers\Admin\DettachPost;
 use App\Http\Controllers\Admin\AdminResourceController;
+use App\Http\Controllers\Admin\ResourceCategory;
+use App\Http\Controllers\Admin\ResourceStatus;
 
 
 
@@ -43,11 +45,13 @@ use \App\Http\Controllers\General\ArticlesController;
 use \App\Http\Controllers\General\ResourcesController;
 use \App\Http\Controllers\General\NewsletterController;
 use \App\Http\Controllers\General\PrivacyPolicy;
+use \App\Http\Controllers\General\HealthResourceController;
 
 Auth::routes();
 Route::resource('/',MainController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group([],function (){
+    Route::resource('health-resources',HealthResourceController::class);
     Route::resource('privacy_policy',PrivacyPolicy::class);
     Route::resource('newsletter',NewsletterController::class);
     Route::resource('resources',ResourcesController::class);
@@ -57,6 +61,8 @@ Route::group([],function (){
     Route::post('image-upload',['as'=>'image-upload','uses'=>imageUpload::class]);
 });
 Route::group(['middleware'=>'auth'], function (){
+    Route::get('admin/resources/resource-status/{id}',['as'=>'resource-status','uses'=>ResourceStatus::class]);
+    Route::get('admin/resources/resource-category/{id}',['as'=>'resource-category','uses'=>ResourceCategory::class]);
     Route::resource('admin/resources',AdminResourceController::class);
     Route::patch('post-unlink/{id}',['as'=>'post-unlink','uses'=>DettachPost::class]);
     Route::patch('post-link/{id}',['as'=>'post-link','uses'=>AttachPost::class]);
