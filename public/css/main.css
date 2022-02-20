@@ -83,7 +83,34 @@ p{
      background-color: var(--primary);
 
  }
- input[type=text],input[type=email],input[type=password]{
+.pagination{
+    background: none !important;
+}
+.page-link{
+
+   border:1px solid var(--primary);
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 18px;
+    margin: 4px;
+    border-radius: 3px;
+    width: 40px;
+}
+.active-page{
+    background-color: var(--primary);
+    color: white;
+
+}
+.active-page:hover,.page-link:hover{
+    color: white;
+    background-color: var(--junior)!important;
+    border:1px solid var(--junior)
+}
+.page-btn{
+
+}
+
+input[type=text],input[type=email],input[type=password],input[type=search]{
      border-radius: 2px!important;
      height: 45px;
      color: var(--dark) !important;
@@ -390,4 +417,8 @@ footer p{
 .profile-change{
     background-color: var(--primary);
     color: white;
+}
+/*------------------Resources-------------------*/
+.resources-row{
+    min-height: 250px!important;
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\General;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Resource;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,9 @@ class HealthResourceController extends Controller
     public function index()
     {
         //
-        return  view('health-resources.index');
+        $categories=Category::plucK('name','id');
+        $resources=Resource::where('status_id',2)->get();
+        return  view('health-resources.index',compact('categories','resources'));
     }
 
     /**

@@ -113,9 +113,9 @@
             <div class="row">
                 @foreach($resources as $resource)
                 <div class="col-11 col-sm-6 col-md-3 mx-auto p-2">
-                    <a href="{{route('health-resources.show',$resource->slug)}}" title="Learn More">
-                        <img src="{{asset($resource->getFirstMediaUrl('cover')? $resource->getFirstMediaUrl('cover'):'/images/no-image.png' )}}" class="img-fluid rounded" alt="{{$resource->name}}"
-                        title="{{$resource->title}}">
+                    <a href="{{route('health-resources.show',$resource->slug)}}" title="{{$resource->name}}">
+                        <img src="{{asset($resource->getFirstMediaUrl('cover')? $resource->getFirstMediaUrl('cover'):'/images/no-image.png' )}}" class="img-fluid curved" alt="{{$resource->name}}"
+                        title="{{$resource->name}}">
                     </a>
 
 
