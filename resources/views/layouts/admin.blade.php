@@ -273,6 +273,30 @@
 
             </div>
 
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThirteen">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThirteen" aria-expanded="false"
+                            aria-controls="flush-headingThirteen">
+                        <i class="fa-solid fa-list me-2"></i>Jobs
+                    </button>
+                </h2>
+                <div id="flush-collapseThirteen" class="accordion-collapse collapse" aria-labelledby="flush-collapseTwelve" data-bs-parent="#flush-collapseThirteen">
+                    <div class="accordion-body">
+                        <ul class="list-unstyled folders">
+                            <li><a href="{{route('jobs.index')}}" title="Admins">View Open Positions</a> </li>
+
+                        </ul>
+                        <ul class="list-unstyled folders">
+                            <li><a href="{{route('jobs.create')}}" title="Admins">Create Open Positions</a> </li>
+
+                        </ul>
+
+
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
     </div>

@@ -37,7 +37,9 @@
                 </div>
             </div>
             <p class="mt-4">Subscribe to get expert health news, report, tips, recommendations, and reviews</p>
+            <div id="subscribe">
             @include('includes.subscriber')
+            </div>
         </div>
         <div class="col-11 col-md-3 mx-auto">
             <ul class="nav flex-column footer-nav">
@@ -54,7 +56,7 @@
                     <a class="nav-link" href="#">Terms and Conditions</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Careers</a>
+                    <a class="nav-link" href="{{route('careers.index')}}">Careers</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('login')}}">Login</a>

@@ -422,3 +422,14 @@ footer p{
 .resources-row{
     min-height: 250px!important;
 }
+/*------------------teams-------------------*/
+.team{
+    background-color: var(--junior);
+}
+.team h2{
+    color: white;
+}
+.team p{
+    color: white;
+    font-size: 20px;
+}

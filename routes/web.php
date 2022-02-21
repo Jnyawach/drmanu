@@ -34,6 +34,7 @@ use App\Http\Controllers\Admin\DettachPost;
 use App\Http\Controllers\Admin\AdminResourceController;
 use App\Http\Controllers\Admin\ResourceCategory;
 use App\Http\Controllers\Admin\ResourceStatus;
+use App\Http\Controllers\Admin\AdminCareerController;
 
 
 
@@ -46,11 +47,13 @@ use \App\Http\Controllers\General\ResourcesController;
 use \App\Http\Controllers\General\NewsletterController;
 use \App\Http\Controllers\General\PrivacyPolicy;
 use \App\Http\Controllers\General\HealthResourceController;
+use \App\Http\Controllers\General\CareerController;
 
 Auth::routes();
 Route::resource('/',MainController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group([],function (){
+    Route::resource('careers',CareerController::class);
     Route::resource('health-resources',HealthResourceController::class);
     Route::resource('privacy_policy',PrivacyPolicy::class);
     Route::resource('newsletter',NewsletterController::class);
@@ -61,6 +64,7 @@ Route::group([],function (){
     Route::post('image-upload',['as'=>'image-upload','uses'=>imageUpload::class]);
 });
 Route::group(['middleware'=>'auth'], function (){
+    Route::resource('admin/jobs',AdminCareerController::class);
     Route::get('admin/resources/resource-status/{id}',['as'=>'resource-status','uses'=>ResourceStatus::class]);
     Route::get('admin/resources/resource-category/{id}',['as'=>'resource-category','uses'=>ResourceCategory::class]);
     Route::resource('admin/resources',AdminResourceController::class);
