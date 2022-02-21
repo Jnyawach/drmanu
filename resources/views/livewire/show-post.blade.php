@@ -38,7 +38,7 @@
                                 @endif
                             </div>
                             <div class="mt-3">
-                                <small>We value you <a href="{{route('privacy_policy.index')}}" title="Privacy policy">privacy</a> </small>
+                                <small>We value you <a href="{{route('privacy-policy')}}" title="Privacy policy">privacy</a> </small>
                             </div>
                         </div>
 

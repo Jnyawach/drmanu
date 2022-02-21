@@ -53,9 +53,13 @@ Auth::routes();
 Route::resource('/',MainController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group([],function (){
+    Route::get('about-us',  [MainController::class, 'about'])->name('about-us');
+    Route::get('terms-of-use',  [MainController::class, 'termsPolicy'])->name('terms-of-use');
+    Route::get('privacy-policy',  [MainController::class, 'privacyPolicy'])->name('privacy-policy');
+    Route::get('advertising-policy',  [MainController::class, 'advertPolicy'])->name('advertising-policy');
+    Route::get('advertise-with-us',  [MainController::class, 'advertise'])->name('advertise');
     Route::resource('careers',CareerController::class);
     Route::resource('health-resources',HealthResourceController::class);
-    Route::resource('privacy_policy',PrivacyPolicy::class);
     Route::resource('newsletter',NewsletterController::class);
     Route::resource('resources',ResourcesController::class);
     Route::resource('articles',ArticlesController::class);

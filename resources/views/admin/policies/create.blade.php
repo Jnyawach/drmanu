@@ -17,9 +17,9 @@
                         @if(old('category'))
                             <option selected value="{{old('category')}}">{{old('category')}}</option>
                         @endif
-                        <option value="Policy Policy">Privacy Policy</option>
-                        <option value="Terms & Conditions">Terms & Conditions</option>
-                        <option value="Advertising Policy">Advertising Policy</option>
+                        <option value="Privacy">Privacy Policy</option>
+                        <option value="Terms">Terms & Conditions</option>
+                        <option value="Advertising">Advertising Policy</option>
 
                     </select>
                     <small class="text-danger">

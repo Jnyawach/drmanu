@@ -8,16 +8,12 @@
         <div class="row">
             @if($policies->count()>0)
                 @foreach($policies as $policy)
-                    <div class="col-12 col-m-6 col-lg-6">
+                    <div class="col-12 col-m-6 col-lg-6 p-2">
                         <div class="card border-3 border-top border-top-primary">
                             <a href="{{route('policies.show', $policy->id)}}" class="text-decoration-none">
                                 <div class="card-body">
                                     <h5 class="text-muted">
-                                        @if($policy->category=='Policy')
-                                            Privacy Policy
-                                        @else
-                                            Terms and Condition
-                                        @endif
+                                        {{$policy->category}}
                                     </h5>
 
                                     <div class="metric-value d-inline-block">

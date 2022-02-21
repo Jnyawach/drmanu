@@ -47,13 +47,13 @@
                     <a class="nav-link" href="{{route('contact.index')}}">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About Us</a>
+                    <a class="nav-link" href="{{route('about-us')}}">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Privacy Policy</a>
+                    <a class="nav-link" href="{{route('privacy-policy')}}" title="Privacy Policy">Privacy Policy</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Terms and Conditions</a>
+                    <a class="nav-link" href="{{route('terms-of-use')}}" title="Terms & Conditions">Terms and Conditions</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('careers.index')}}">Careers</a>
@@ -66,10 +66,10 @@
         <div class="col-11 col-md-3 mx-auto">
             <ul class="nav flex-column footer-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Advertising Policy</a>
+                    <a class="nav-link" href="{{route('advertising-policy')}}" title="Advertising Policy">Advertising Policy</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Advertise with us</a>
+                    <a class="nav-link" href="{{route('advertise')}}" title="Advertise with us">Advertise with us</a>
                 </li>
 
             </ul>

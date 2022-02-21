@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\General\PrivacyPolicy;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Policy;
 use App\Models\Resource;
 use App\Models\Section;
 use Illuminate\Http\Request;
@@ -95,5 +97,26 @@ class MainController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function advertise(){
+        return view('advertise-with-us');
+    }
+
+    public function advertPolicy(){
+        $policy=Policy::where('category','Advertising')->latest()->first();
+        return view('advertising-policy', compact('policy'));
+    }
+    public function privacyPolicy(){
+        $policy=Policy::where('category','Privacy')->latest()->first();
+        return view('privacy-policy', compact('policy'));
+    }
+    public function termsPolicy(){
+        $policy=Policy::where('category','Terms')->latest()->first();
+        return view('terms-of-use', compact('policy'));
+    }
+    public function about(){
+
+        return view('about-us');
     }
 }

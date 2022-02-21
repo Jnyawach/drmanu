@@ -15,9 +15,9 @@
                     <label for="category" class="control-label">Category:</label>
                     <select class="form-select" aria-label="category" id="category" name="category" required>
                         <option selected value="{{$policy->category}}">{{$policy->category}}</option>
-                        <option value="Policy">Privacy Policy</option>
+                        <option value="Privacy">Privacy Policy</option>
                         <option value="Terms">Terms & Conditions</option>
-                        <option value="Terms">Advertising Policy</option>
+                        <option value="Advertising">Advertising Policy</option>
                     </select>
                     <small class="text-danger">
                         @error('category')

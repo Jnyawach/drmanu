@@ -433,3 +433,10 @@ footer p{
     color: white;
     font-size: 20px;
 }
+/*------------------advertise-------------------*/
+.advert{
+    background-color: var(--backdrop);
+}
+.advertise h1{
+    font-size: 48px;
+}
