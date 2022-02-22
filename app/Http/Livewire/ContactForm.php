@@ -46,7 +46,6 @@ class ContactForm extends Component
        ]);
         Mail::send('mailing.contact', ['mess'=>$mess], function ($message) use($mess){
             $message->to($mess->email);
-            $message->from('nyawach41@gmail.com');
             $message->subject($mess->subject);
 
         });

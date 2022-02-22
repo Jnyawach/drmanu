@@ -53,7 +53,7 @@
                     <a class="nav-link" href="{{route('privacy-policy')}}" title="Privacy Policy">Privacy Policy</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('terms-of-use')}}" title="Terms & Conditions">Terms and Conditions</a>
+                    <a class="nav-link" href="{{route('terms-of-use')}}" title="Terms & Conditions">Terms of Use</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('careers.index')}}">Careers</a>
