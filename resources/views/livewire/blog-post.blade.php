@@ -23,7 +23,7 @@
                 <input type="text" name="title" wire:model="title" id="title" required
                        class="form-control">
                 @error('title') <span class="error">{{ $message }}</span> @enderror<br>
-                <small>Should not exceed 120 Characters.</small>
+                <small>Should not exceed 80 Characters.</small>
                 <small>Should contain at least one Keyword For Example:
                     Antiviral drug combo may be effective against <strong>COVID-19</strong></small>
             </div>

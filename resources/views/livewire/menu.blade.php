@@ -105,7 +105,7 @@
                             </li>
                             -->
                             <li class="nav-item me-4">
-                                <a class="nav-link" href="{{route('resources.index')}}" id="resources" title="Health Resources">
+                                <a class="nav-link" href="{{route('health-resources.index')}}" id="resources" title="Health Resources">
                                     RESOURCES
                                 </a>
                             </li>
@@ -203,7 +203,7 @@
                                 <li class="dropdown-divider"><hr></li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{route('resources.index')}}" title="Health Resources">
+                                    <a class="nav-link" href="{{route('health-resources.index')}}" title="Health Resources">
                                         <i class="fa-solid fa-book-open me-3"></i>RESOURCES</a>
                                 </li>
 
