@@ -36,6 +36,9 @@
                     <a class="nav-link" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="{{route('admin.index')}}">Admin</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="{{route('messages.index')}}"><i class="far fa-envelope"></i></a>
                 </li>
                 <li class="nav-item">

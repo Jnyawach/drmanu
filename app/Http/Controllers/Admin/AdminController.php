@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Blog;
+use App\Models\Resource;
+use App\Models\Status;
+use App\Models\Subscription;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,7 +20,13 @@ class AdminController extends Controller
     public function index()
     {
         //
-        return  view('admin.index');
+        $subscribers=Subscription::all();
+        $users=User::all();
+        $posts=Blog::all();
+        $resources=Resource::all();
+        $statuses=Status::pluck('name','id');
+        return  view('admin.index',compact('subscribers',
+            'users','posts','resources','statuses'));
     }
 
     /**

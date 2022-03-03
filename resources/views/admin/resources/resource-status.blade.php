@@ -119,6 +119,8 @@
         $(document).ready( function () {
             $('#blog').DataTable();
 
+
+
         } );
     </script>
 @endsection

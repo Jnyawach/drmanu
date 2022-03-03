@@ -67,7 +67,7 @@ Route::group([],function (){
     Route::resource('contact',ContactController::class);
     Route::post('image-upload',['as'=>'image-upload','uses'=>imageUpload::class]);
 });
-Route::group(['middleware'=>'auth'], function (){
+Route::group(['middleware'=>['auth','active']], function (){
     Route::resource('admin/jobs',AdminCareerController::class);
     Route::get('admin/resources/resource-status/{id}',['as'=>'resource-status','uses'=>ResourceStatus::class]);
     Route::get('admin/resources/resource-category/{id}',['as'=>'resource-category','uses'=>ResourceCategory::class]);
