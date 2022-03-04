@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Career;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class CreateJobs extends Component
@@ -33,7 +34,7 @@ class CreateJobs extends Component
         $job=Career::create([
             'title'=>$this->title,
             'status'=>$this->status,
-            'deadline'=>$this->deadline,
+            'deadline'=>Carbon::parse($this->deadline),
             'description'=>$this->description,
         ]);
         $this->clearForm();

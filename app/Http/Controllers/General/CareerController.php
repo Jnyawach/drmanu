@@ -4,6 +4,7 @@ namespace App\Http\Controllers\General;
 
 use App\Http\Controllers\Controller;
 use App\Models\Career;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class CareerController extends Controller
@@ -16,7 +17,8 @@ class CareerController extends Controller
     public function index()
     {
         //
-        $careers=Career::where('status',1)->get();
+        $careers=Career::where('status',1)
+            ->where('deadline','>',Carbon::now())->get();
         return  view('careers.index', compact('careers'));
     }
 

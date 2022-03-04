@@ -34,9 +34,9 @@
 
                 <div class="col-8 col-md-8 col-lg-8 ">
                     <h1 class="fs-1">Current Openings</h1>
-                    <p class="mt-4 fs-4">We’re looking for dedicated, creative people to<br>
+                    <p class="mt-4 fs-5">We’re looking for dedicated, creative people to
                         join us in making Dr.Manu even better. Is that you?</p>
-                    <p class="fs-4 " >At Dr. Manu, our most valuable resource is our people,
+                    <p class="fs-5 " >At Dr. Manu, our most valuable resource is our people,
                         A diversity of background, ideas, options, and life experiences. We are
                         open to ideas and taking risks because all this is learning and mastery.
                         Besides, it is  an opportunity to be yourself and impact the lives of other

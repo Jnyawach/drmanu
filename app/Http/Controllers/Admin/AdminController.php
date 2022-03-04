@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Career;
+use App\Models\Contact;
 use App\Models\Resource;
 use App\Models\Status;
 use App\Models\Subscription;
@@ -24,9 +26,11 @@ class AdminController extends Controller
         $users=User::all();
         $posts=Blog::all();
         $resources=Resource::all();
+        $messages=Contact::all();
+        $jobs=Career::all();
         $statuses=Status::pluck('name','id');
         return  view('admin.index',compact('subscribers',
-            'users','posts','resources','statuses'));
+            'users','posts','resources','statuses','messages','jobs'));
     }
 
     /**

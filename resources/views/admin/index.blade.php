@@ -7,6 +7,7 @@
     <section class="p-5">
         <div class="row">
             <div class="col-12 col-md-3 p-2">
+                <a href="{{route('subscriptions.index')}}" title="View Subscribers" class="text-decoration-none">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title">
@@ -21,8 +22,10 @@
                         </p>
                     </div>
                 </div>
+                </a>
             </div>
             <div class="col-12 col-md-3 p-2">
+                <a href="{{route('users.index')}}" title="View Users" class="text-decoration-none">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title">
@@ -38,8 +41,10 @@
                         </p>
                     </div>
                 </div>
+                </a>
             </div>
             <div class="col-12 col-md-3 p-2">
+                <a href="{{route('blogs.index')}}" title="View Posts" class="text-decoration-none">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title">
@@ -55,9 +60,11 @@
                         </p>
                     </div>
                 </div>
+                </a>
             </div>
 
             <div class="col-12 col-md-3 p-2">
+                <a href="{{route('resources.index')}}" title="View Resources" class="text-decoration-none">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title">
@@ -73,6 +80,47 @@
                         </p>
                     </div>
                 </div>
+                </a>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 col-md-6 p-2">
+                <a href="{{route('jobs.index')}}" title="Posted Jobs" class="text-decoration-none">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">
+                            Jobs
+                        </h2>
+                        <h4 class="fw-bold">Total: {{$jobs->count()}}</h4>
+                    </div>
+                    <div class="card-footer">
+                        <p class="fs-6 fw-bold">
+                            Active: <span>{{$jobs->where('status',1)->count()}}</span>&nbsp;
+                            Closed: <span>{{$jobs->where('status',0)->count()}}</span>&nbsp;
+
+                        </p>
+                    </div>
+                </div>
+                </a>
+            </div>
+            <div class="col-12 col-md-6 p-2">
+                <a href="{{route('messages.index')}}" title="messages" class="text-decoration-none">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title">
+                                Messages
+                            </h2>
+                            <h4 class="fw-bold">Total: {{$messages->count()}}</h4>
+                        </div>
+                        <div class="card-footer">
+                            <p class="fs-6 fw-bold">
+                                Unread: <span>{{$messages->where('status',0)->count()}}</span>&nbsp;
+                                No Response: <span>{{$messages->where('response',null)->count()}}</span>&nbsp;
+                                Responded: <span>{{$messages->where('response',true)->count()}}</span>&nbsp;
+                            </p>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
 
@@ -283,6 +331,8 @@
                 </div>
             </div>
         </div>
+
+
 
     </section>
 @endsection

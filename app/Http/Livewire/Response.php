@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Contact;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 
 class Response extends Component
@@ -21,13 +22,18 @@ class Response extends Component
 
     public function createResponse(){
 
-        $message=Contact::findOrFail($this->message->id);
+        $mess=Contact::findOrFail($this->message->id);
 
         $this->validate();
-        $message->update([
+        $mess->update([
             'response'=>$this->response,
             'user_id'=>Auth::id(),
         ]);
+        Mail::send('mailing.response', ['mess'=>$mess], function ($message) use($mess){
+            $message->to($mess->email);
+            $message->subject($mess->subject);
+
+        });
         return redirect(request()->header('Referer'));
     }
     public function render()

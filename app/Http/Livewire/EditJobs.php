@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Career;
+use Carbon\Carbon;
 use Livewire\Component;
 
 class EditJobs extends Component
@@ -35,7 +36,7 @@ class EditJobs extends Component
         $job->update([
             'title'=>$this->title,
             'status'=>$this->status,
-            'deadline'=>$this->deadline,
+            'deadline'=>Carbon::parse($this->deadline),
             'description'=>$this->description,
         ]);
 
