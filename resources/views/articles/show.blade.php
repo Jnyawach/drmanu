@@ -2,12 +2,18 @@
 @section('title', $post->title)
 @section('styles')
     @livewireStyles
+    <meta property="og:url"           content="https://www.drmanu.com/articles/{{$post->slug}}" />
+    <meta property="og:type"          content="Dr. Manu" />
+    <meta property="og:title"         content="{{$post->title}}" />
+    <meta property="og:description"   content="{{$post->summary}}" />
+    <meta property="og:image"         content="{{asset($post->getFirstMediaUrl('imageCard')? $post->getFirstMediaUrl('imageCard'):'/images/no-image.png' )}}" />
 @endsection
 @section('content')
+
     <section>
         <!--Ads Space-->
     </section>
-    <section class="post p-5">
+    <section class="post p-lg-5 p-3">
         <div class="row mt-5">
             <div class="col-11 col-md-9 mx-auto">
                 <h6 class="fw-bold fs-6 text-uppercase">{{$post->category->name}}</h6>
@@ -22,10 +28,11 @@
                 <div class="mt-3">
                     <div class="social" >
                         <h6 class="fs-6">Share this article:</h6>
-                        <a href="#" title="Facebook" class="m-2" style="color: black"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" title="Instagram" class="m-2" style="color: black"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" title="Instagram" class="m-2" style="color: black"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" title="Instagram" class="m-2" style="color: black"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <iframe src="https://www.facebook.com/plugins/share_button.php?href=http%3A%2F%2F127.0.0.1%3A8000%2Farticles%2Fhow-covid-19-has-affected-diet-and-mental-health&layout=button_count&size=small&width=77&height=20&appId" width="77" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                      <div>
+                          <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+                          <script type="IN/Share" data-url="https://www.drmanu.com/articles/{{$post->slug}}"></script>
+                      </div>
                     </div>
                 </div>
             </div>
@@ -67,49 +74,37 @@
     </section>
     <section class="resources m-5 pt-3">
         <h1 class="text-uppercase fs-4">Resources
-            <a href="{{route('resources.index')}}" class="float-end text-decoration-none" title="Explore Resources">
-                <span>See All<i class="fa-solid fa-angle-right ms-1"></i></span></a></h1>
+            <a href="{{route('health-resources.index')}}" class="float-end text-decoration-none" title="Explore Categories">
+                <span>See All<i class="fa-solid fa-angle-right ms-1"></i></span></a>
+        </h1>
         <hr>
         <div class="row">
-            <div class="col-11 col-sm-6 col-md-3 mx-auto p-2">
-                <a href="#" title="download">
-                    <img src="{{asset('images/HL-Fitness_Hub-600x900-Pinterest.jpg')}}" class="img-fluid rounded" alt="#">
-                </a>
+            @foreach($resources as $resource)
+                <div class="col-6 col-sm-6 col-md-3 mx-auto p-2">
+                    <a href="{{route('health-resources.show',$resource->slug)}}" title="{{$resource->name}}">
+                        <img src="{{asset($resource->getFirstMediaUrl('cover')? $resource->getFirstMediaUrl('cover'):'/images/no-image.png' )}}" class="img-fluid curved" alt="{{$resource->name}}"
+                             title="{{$resource->name}}">
+                    </a>
 
-            </div>
-            <div class="col-11 col-sm-6 col-md-3 mx-auto p-2">
-                <a href="#" title="download">
-                    <img src="{{asset('images/HL-Key-Art-ALTG-Heart-Health-Foundation_pinterest_600x900.jpg')}}" class="img-fluid rounded" alt="#">
-                </a>
 
-            </div>
-            <div class="col-11 col-sm-6 col-md-3 mx-auto p-2">
-                <a href="#" title="download">
-                    <img src="{{asset('images/Managing-Your-Mental-Health-During-the-Pandemic-600x900-SPOTLIGHT.jpeg')}}" class="img-fluid rounded" alt="#">
-                </a>
+                </div>
+            @endforeach
 
-            </div>
-            <div class="col-11 col-sm-6 col-md-3 mx-auto p-2">
-                <a href="#" title="download">
-                    <img src="{{asset('images/Type-2-Diabetes-600x900-Pinterest.jpg')}}" class="img-fluid rounded" alt="#">
-                </a>
-
-            </div>
         </div>
     </section>
-    <section class="trending m-5 pt-3">
+    <section class="trending m-lg-5 pt-3 m-3">
         <h1 class="text-uppercase fs-4">More From {{$post->category->name}}</h1>
         <hr>
         <div class="row">
             @foreach($blogs as $blog)
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-md-6">
                     <a href="{{route('articles.show',$post->slug)}}" class="text-decoration-none m-2">
                         <div class="row">
-                            <div class="col-4 col-md-3">
+                            <div class="col-4  col-md-5 col-lg-3">
                                 <img src="{{asset($post->getFirstMediaUrl('imageCard')? $post->getFirstMediaUrl('imageCard','blog-thumb'):'/images/no-image.png' )}}" class="img-fluid curved"
                                      alt="{{$post->imageAlt}}" title="{{$post->imageTitle}}">
                             </div>
-                            <div class="col-8">
+                            <div class="col-8  col-md-7 col-lg-8">
                                 <h2 class="fs-4">{{$post->title}}</h2>
                                 <h6 class="ms-2 text-uppercase">Fitness may 6, 2021</h6>
                             </div>

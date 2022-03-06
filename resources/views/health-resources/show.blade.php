@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('title',$resource->title)
 @section('content')
-    <section class="p-5">
+    <section class="p-3 p-lg-5">
         <div class="row">
             <div class="col-10">
                 <div class="mt-3">

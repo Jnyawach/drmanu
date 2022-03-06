@@ -30,7 +30,7 @@
         @if($resources->count()>0)
         <div class="row resources-row">
             @foreach($resources as $resource)
-                <div class="col-10 col-sm-6 col-md-2 p-1">
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2 p-1">
 
                     <a href="{{route('health-resources.show',$resource->slug)}}" title="{{$resource->name}}">
                         <img src="{{asset($resource->getFirstMediaUrl('cover')? $resource->getFirstMediaUrl('cover'):'/images/no-image.png' )}}" class="img-fluid rounded" alt="{{$resource->name}}"

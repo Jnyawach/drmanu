@@ -39,7 +39,7 @@
                                                     </div>
                                                     <div class="col-md-8">
                                                         <h6 class="fs-4 fw-bold">{{$post->title}}</h6>
-                                                        <p class="fs-5 fw-bold">{{$post->summary}}<span>...[more]</span></p>
+                                                        <p class="fs-6">{{$post->summary}}<span>...[more]</span></p>
                                                     </div>
 
                                                 </div>
@@ -150,6 +150,32 @@
                                     </div>
                                 </div>
                             </li>
+                            @auth()
+                                <li class="nav-item me-4 float-end">
+
+                                    <div class="dropdown">
+                                        <a class="nav-link text-uppercase" href="#"  title="{{Auth::user()->name}}" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {{Auth::user()->name}}<i class="fas fa-angle-down ms-2"></i>
+                                        </a>
+                                        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item btn-link" href="{{route('admin.index')}}">Dashboard</a></li>
+                                            <li><hr class="dropdown-divider"> </li>
+                                            <li>
+                                                <a class="dropdown-item btn-link" href="{{ route('logout') }}"
+                                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                    {{ __('Logout') }}
+                                                </a>
+
+                                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                    @csrf
+                                                </form>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </li>
+                            @endauth
 
                         </ul>
 
@@ -211,6 +237,12 @@
                                     <a class="nav-link" href="{{route('newsletter.index')}}" title="Subscribe to our Newsletter">
                                         <i class="fa-solid fa-envelope-open-text me-3"></i>SUBSCRIBE</a>
                                 </li>
+                                    @auth
+                                    <li class="nav-item">
+                                        <a class="nav-link text-uppercase" href="{{route('admin.index')}}" title="Dashboard">
+                                            <i class="fa-solid fa-user me-3"></i>{{Auth::user()->name}}</a>
+                                    </li>
+                                    @endauth
 
                             </ul>
                         </div>

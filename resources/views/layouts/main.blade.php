@@ -20,7 +20,7 @@
 </main>
 <footer class="p-5">
     <div class="row">
-        <div class="col-11 col-md-6 mx-auto">
+        <div class="col-10 col-md-6  mx-auto">
             <div class="row">
                 <div class="col-6 col-md-4">
                     <a href="/" title="Dr. Manu">
@@ -29,10 +29,10 @@
                 </div>
                 <div class="col-6">
                     <div class="social">
-                        <a href="#" title="Facebook" class="m-2"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" title="Instagram" class="m-2"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" title="Instagram" class="m-2"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" title="Instagram" class="m-2"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="https://web.facebook.com/DrManuHealth" title="Facebook" class="m-1" target="_blank"><i class="fa-brands fa-facebook-square"></i></a>
+                        <a href="https://www.linkedin.com/company/drmanu" title="linkedIn" class="m-1" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="#" title="Twitter" class="m-1" target="_blank"><i class="fa-brands fa-twitter-square"></i></a>
+                        <a href="https://www.pinterest.com/dr_manu" title="Pinterest" class="m-1" target="_blank"><i class="fa-brands fa-pinterest-square"></i></a>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
             @include('includes.subscriber')
             </div>
         </div>
-        <div class="col-11 col-md-3 mx-auto">
+        <div class="col-11 col-sm-6 col-md-3 mx-auto">
             <ul class="nav flex-column footer-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('contact.index')}}">Contact Us</a>
@@ -63,7 +63,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-11 col-md-3 mx-auto">
+        <div class="col-11 col-md-3 col-sm-6 mx-auto">
             <ul class="nav flex-column footer-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('advertising-policy')}}" title="Advertising Policy">Advertising Policy</a>

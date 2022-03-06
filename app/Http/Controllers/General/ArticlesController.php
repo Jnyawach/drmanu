@@ -4,6 +4,7 @@ namespace App\Http\Controllers\General;
 
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
+use App\Models\Resource;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -51,9 +52,10 @@ class ArticlesController extends Controller
         $post=Blog::findBySlugOrFail($id);
         $blogs=Blog::where('category_id',$post->category_id)->where('status_id',2)
         ->latest()->limit(20)->get();
+        $resources=Resource::where('status_id',2)->latest()->limit(4)->get();
 
         return view('articles.show',
-            compact('post', 'blogs'));
+            compact('post', 'blogs','resources'));
     }
 
     /**
